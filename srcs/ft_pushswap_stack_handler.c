@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 06:45:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 11:50:22 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 13:21:38 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void		ps_stack_add(t_psstack **root, int where, int id, int val)
 		*root = new;
 	else if (where == 0)
 	{
+		last = *root;
+		last->prev = new;
 		new->next = *root;
 		*root = new;
 	}
@@ -82,4 +84,30 @@ void		ps_stack_add(t_psstack **root, int where, int id, int val)
 		new->prev = last;
 		last->next = new;
 	}
+}
+
+void		ps_stack_del(t_psstack **root, int where)
+{
+	t_psstack	*del;
+	t_psstack	*tmp;
+
+	if (!(del = *root))
+		return ;
+	if (where)
+	{
+		while (del->next)
+			del = del->next;
+		if ((tmp = del->prev))
+			tmp->next = NULL;
+	}
+	else
+	{
+		if ((tmp = del->next))
+		{
+			tmp->prev = NULL;
+			*root = tmp;
+		}
+	}
+	*root = ((!del->prev && where) || (!del->next && !where)) ? NULL : *root;
+	ft_memdel((void **)&del);
 }

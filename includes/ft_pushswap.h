@@ -44,6 +44,7 @@ void		ps_parse_options(t_psdata *ps, char **argv);
 void		ps_parse_array(t_psdata *ps, char **argv);
 
 void		ps_stack_add(t_psstack **root, int where, int id, int val);
+void		ps_stack_del(t_psstack **root, int where);
 void		ps_stack_solve(t_psdata *ps, t_psstack **root, int id, int val);
 
 void		ps_stack_free(t_psdata *ps);

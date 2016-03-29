@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 11:46:11 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 13:27:38 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			main(int argc, char **argv)
 {
 	t_psdata	ps;
 
-argv = ft_strsplit("a.out -vc 1 2 3 1 6 5 8", ' '); argc = 2;
+argv = ft_strsplit("a.out -vc 1 2 3 4 5 6", ' '); argc = 2;
 
 	ft_bzero((void **)&ps, sizeof(t_psdata));
 	if (argc == 1)
@@ -51,7 +51,17 @@ argv = ft_strsplit("a.out -vc 1 2 3 1 6 5 8", ' '); argc = 2;
 	ps_parse_options(&ps, argv);
 	ps_parse_array(&ps, argv);
 
-	ps_stack_print_full(ps.st3);
+	ps_stack_print_full(ps.st1);
+
+	// ps_stack_del(&ps.st1, 0);
+	// ps_stack_add(&ps.st1, 1, 6, 6);
+	// ps_stack_del(&ps.st1, 0);
+	// ps_stack_add(&ps.st1, 1, 5, 5);
+	// ps_stack_del(&ps.st1, 0);
+	// ps_stack_add(&ps.st1, 1, 4, 4);
+	// ps_stack_del(&ps.st1, 1);
+	// ps_stack_add(&ps.st1, 0, 4, 4);
+	// ps_stack_print_full(ps.st1);
 
 ps_test_free(argv);
 
