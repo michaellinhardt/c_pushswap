@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/21 10:54:22 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/29 06:52:59 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ LIST_SRC		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 				  ft_strtolower.c ft_strtoupper.c ft_countwords.c ft_pow.c ft_strrev.c \
 				  ft_pcol.c ft_imaxtoa_base.c ft_uimaxtoa_base.c ft_wstrtostr.c \
-				  ft_wchartostr.c ft_strrealloc.c ft_ldtoa.c
+				  ft_wchartostr.c ft_strrealloc.c ft_ldtoa.c ft_atoimax.c
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
 
 all: $(NAME)
