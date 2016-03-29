@@ -6,17 +6,20 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/29 06:49:02 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/29 07:58:43 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	push_swap
 CC		=	gcc
-FLAGS	=	-Wall -Wextra -Werror -g
+FLAGS1	=	-g
+FLAGS2	=	-Wall -Wextra -Werror -g
+FLAGS	=	$(FLAGS1)
 
 SRCS	=	ft_pushswap.c \
 			ft_pushswap_parse.c \
-			ft_pushswap_build_stack.c
+			ft_pushswap_stack_build.c \
+			ft_pushswap_stack_free.c
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/

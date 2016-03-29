@@ -6,22 +6,22 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 06:55:48 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 08:06:15 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-int			ps_parse_options(t_psdata *ps, char **argv)
+void		ps_parse_options(t_psdata *ps, char **argv)
 {
 	int			i;
 
 	if (!(i = 0) && argv[1][0] != '-')
-		return (0);
+		return ;
 	if (!argv[1][1])
-		return (1);
+		ps_error(ps, 2);
 	if (argv[1][1] && argv[1][1] >= '0' && argv[1][1] <= '9')
-		return (0);
+		return ;
 	while (argv[1][++i])
 	{
 		if (argv[1][i] == 'v')
@@ -29,13 +29,12 @@ int			ps_parse_options(t_psdata *ps, char **argv)
 		else if (argv[1][i] == 'c')
 			ps->col = 1;
 		else
-			return (1);
+			ps_error(ps, 2);
 	}
 	ps->opts = 1;
-	return (0);
 }
 
-int			ps_parse_array(t_psdata *ps, char **argv)
+void		ps_parse_array(t_psdata *ps, char **argv)
 {
 	int			i;
 	int			j;
@@ -45,13 +44,14 @@ int			ps_parse_array(t_psdata *ps, char **argv)
 	while (argv[++i] && (j = -1))
 	{
 		if (argv[i][++j] != '-' && !ft_isdigit(argv[i][j]))
-			return (1);
+			ps_error(ps, 3);
 		while (argv[i][++j])
 			if (!ft_isdigit(argv[i][j]))
-				return (1);
-		val = ft_imaxtoa_base(argv[i], "0123456789");
+				ps_error(ps, 3);
+		val = ft_atoimax(argv[i]);
 		if (val > INT_MAX || val < INT_MIN)
-			return (1);
+			ps_error(ps, 4);
+		ps_stack_add(ps, val);
+		// ps_build_stack_solve(ps, val);
 	}
-	return (0);
 }
