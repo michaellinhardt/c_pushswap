@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/29 04:54:56 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/29 05:13:32 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	= 	push_swap
 CC		=	gcc
 FLAGS	=	-Wall -Wextra -Werror -g
 
-SRCS	=	main.c \
+SRCS	=	ft_pushswap.c \
+			ft_pushswap_parse.c
 
 HDIR 	=	./includes/
 LDIR 	= 	./libft/
