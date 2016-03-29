@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 06:30:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 06:52:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			ps_parse_options(t_psdata *ps, char **argv)
 {
-	int		i;
+	int			i;
 
 	if (!(i = 0) && argv[1][0] != '-')
 		return (0);
@@ -37,8 +37,9 @@ int			ps_parse_options(t_psdata *ps, char **argv)
 
 int			ps_parse_array(t_psdata *ps, char **argv)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
+	intmax_t	val;
 
 	i = ps->opts;
 	while (argv[++i] && (j = -1))
@@ -48,6 +49,9 @@ int			ps_parse_array(t_psdata *ps, char **argv)
 		while (argv[i][++j])
 			if (!ft_isdigit(argv[i][j]))
 				return (1);
+		val = ft_imaxtoa_base(argv[i], "0123456789");
+		if (val > INT_MAX || val < INT_MIN)
+			return (1);
 	}
 	return (0);
 }
