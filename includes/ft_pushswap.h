@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 11:52:17 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/29 13:52:05 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <limits.h>
+
+enum move { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr };
 
 typedef struct		s_psstack
 {
@@ -50,5 +52,7 @@ void		ps_stack_solve(t_psdata *ps, t_psstack **root, int id, int val);
 void		ps_stack_free(t_psdata *ps);
 
 void		ps_stack_print_full(t_psstack *root);
+
+void		ps_stack_move(t_psdata *ps, enum move move);
 
 #endif

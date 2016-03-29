@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/29 11:50:57 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/29 13:46:21 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FLAGS	=	$(FLAGS1)
 SRCS	=	ft_pushswap.c \
 			ft_pushswap_parse.c \
 			ft_pushswap_stack_handler.c \
+			ft_pushswap_stack_move.c \
 			ft_pushswap_stack_print.c \
 			ft_pushswap_stack_free.c
 
