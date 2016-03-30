@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 15:20:42 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/30 18:03:39 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void		ps_stack_print_full(t_psstack *root);
 void		ps_stack_move(t_psdata *ps, enum move move);
 
 void		ps_solve_stupid(t_psdata *ps);
+
+void		ps_solve_bulle(t_psdata *ps);
 
 void		ps_solve_positions(t_psstack *list);
 int			ps_issolved(t_psstack *stack);

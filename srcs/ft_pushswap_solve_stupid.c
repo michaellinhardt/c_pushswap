@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 12:39:18 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 15:13:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/30 15:36:39 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_solve_stupid_movetob(t_psdata *ps)
+void		ps_solve_stupid(t_psdata *ps)
 {
 	t_psstack	*solved;
 	t_psstack	*stack;
@@ -39,9 +39,4 @@ void		ps_solve_stupid_movetob(t_psdata *ps)
 	count = ps->count;
 	while (count--)
 		ps_stack_move(ps, pa);
-}
-
-void		ps_solve_stupid(t_psdata *ps)
-{
-	ps_solve_stupid_movetob(ps);
 }

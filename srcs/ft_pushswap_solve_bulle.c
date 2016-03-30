@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_solve_tools.c                          :+:      :+:    :+:   */
+/*   ft_pushswap_solve_bulle.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 15:31:35 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/03/30 15:41:15 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/03/30 18:54:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_solve_positions(t_psstack *list)
+void		ps_solve_bulle(t_psdata *ps)
 {
-	int		pos;
+	t_psstack	*last;
+	t_psstack	*prev;
+	int			loop;
 
-	pos = 0;
-	while (list && (list->pos = ++pos))
-		list = list->next;
-}
-
-int			ps_issolved(t_psstack *stack)
-{
-	int		val;
-
-	if (!stack || !stack->next)
-		return (1);
-	val = stack->val;
-	stack = stack->next;
-	while (stack)
+	loop = ps->count;
+	while (42)
 	{
-		if (val < stack->val)
-			return (0);
-		val = stack->val;
-		stack = stack->next;
+		last = ps->st1->next;
+		while (last->next)
+			last = last->next;
+		prev = last->prev;
+		if (last->val > prev->val)
+			ps_stack_move(ps, sa);
+		ps_stack_move(ps, ra);
+		if (--loop < 2)
+		{
+			loop = ps->count;
+			ps_stack_move(ps, ra);
+		}
+		if (ps_issolved(ps->st1))
+			break ;
 	}
-	return (1);
 }
