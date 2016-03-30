@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 11:46:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/30 13:08:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		ps_stack_add(&ps->st1, 0, ps->count, val);
 		ps_stack_solve(ps, &ps->st3, ps->count, val);
 	}
+	ps_solve_positions(ps->st1);
+	ps_solve_positions(ps->st3);
 }

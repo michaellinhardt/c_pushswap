@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 10:47:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/30 15:12:11 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,27 @@ argv = ft_strsplit("a.out -vc 2 1 3 6 5 8", ' '); argc = 2;
 	ps_parse_options(&ps, argv);
 	ps_parse_array(&ps, argv);
 
-	ps_stack_print_full(ps.st1);
-	ps_stack_move(&ps, sa);
-	ps_stack_move(&ps, pb);
-	ps_stack_move(&ps, pb);
-	ps_stack_move(&ps, pb);
-	ps_stack_move(&ps, rr);
-	ps_stack_move(&ps, rrr);
-	ps_stack_move(&ps, sa);
-	ps_stack_move(&ps, pa);
-	ps_stack_move(&ps, pa);
-	ps_stack_move(&ps, pa);
-	ps_stack_print_full(ps.st1);
-	ps_stack_print_full(ps.st2);
 
+	ps_solve_stupid(&ps);
+
+
+
+	ps_stack_print_full(ps.st1);
+			printf("***\n");
+	ps_stack_print_full(ps.st2);
+	printf("%d\n", ps.nbmove);
+	// ps_stack_move(&ps, sa);
+	// ps_stack_move(&ps, pb);
+	// ps_stack_move(&ps, pb);
+	// ps_stack_move(&ps, pb);
+	// ps_stack_move(&ps, rr);
+	// ps_stack_move(&ps, rrr);
+	// ps_stack_move(&ps, sa);
+	// ps_stack_move(&ps, pa);
+	// ps_stack_move(&ps, pa);
+	// ps_stack_move(&ps, pa);
+	// ps_stack_print_full(ps.st1);
+	// ps_stack_print_full(ps.st2);
 ps_test_free(argv);
 
 	ps_stack_free(&ps);

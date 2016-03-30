@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_stack_print.c                          :+:      :+:    :+:   */
+/*   ft_pushswap_parse.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/29 06:45:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 13:01:42 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/03/30 13:03:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_stack_print_full(t_psstack *root)
+void		ps_solve_positions(t_psstack *list)
 {
-	t_psstack *stack;
+	int		pos;
 
-	stack = root;
-	if (stack)
-	{
-		printf("****************\n");
-		printf("%-6s |  %-6s |  %-6s\n", "ID", "VAL", "POS");
-		while (stack)
-		{
-			printf("%-6d |  %-6d |  %-6d\n", stack->id, stack->val, stack->pos);
-			stack = stack->next;
-		}
-		printf("****************\n");
-	}
+	pos = 0;
+	while (list && (list->pos = ++pos))
+		list = list->next;
 }

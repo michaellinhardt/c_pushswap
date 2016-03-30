@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 13:43:08 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 10:42:10 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/30 14:57:27 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void		ps_stack_move(t_psdata *ps, enum move move)
 		ps_stack_move_revrotate(&ps->st1);
 	if (move == rrb || move == rrr)
 		ps_stack_move_revrotate(&ps->st2);
+	ps->nbmove++;
 }
