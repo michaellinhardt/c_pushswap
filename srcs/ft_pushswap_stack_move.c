@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 13:43:08 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 14:42:42 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/30 10:42:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,36 @@ void		ps_stack_move_swap(t_psstack **root)
 	last->val = prev->val;
 	prev->id = id;
 	prev->val = val;
+}
+
+void		ps_stack_move_rotate(t_psstack **root)
+{
+	t_psstack	*stack;
+	int		id;
+	int		val;
+
+	if (!(stack = *root) || !((*root)->next))
+		return ;
+	while (stack->next)
+		stack = stack->next;
+	id = stack->id;
+	val = stack->val;
+	ps_stack_del(&(*root), 1);
+	ps_stack_add(&(*root), 0, id, val);
+}
+
+void		ps_stack_move_revrotate(t_psstack **root)
+{
+	t_psstack	*stack;
+	int		id;
+	int		val;
+
+	if (!(stack = *root) || !((*root)->next))
+		return ;
+	id = stack->id;
+	val = stack->val;
+	ps_stack_del(&(*root), 0);
+	ps_stack_add(&(*root), 1, id, val);
 }
 
 void		ps_stack_move_push(t_psstack **src, t_psstack **dst)
@@ -59,4 +89,12 @@ void		ps_stack_move(t_psdata *ps, enum move move)
 		ps_stack_move_push(&ps->st2, &ps->st1);
 	if (move == pb)
 		ps_stack_move_push(&ps->st1, &ps->st2);
+	if (move == ra || move == rr)
+		ps_stack_move_rotate(&ps->st1);
+	if (move == rb || move == rr)
+		ps_stack_move_rotate(&ps->st2);
+	if (move == rra || move == rrr)
+		ps_stack_move_revrotate(&ps->st1);
+	if (move == rrb || move == rrr)
+		ps_stack_move_revrotate(&ps->st2);
 }
