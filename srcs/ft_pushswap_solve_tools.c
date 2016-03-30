@@ -20,3 +20,21 @@ void		ps_solve_positions(t_psstack *list)
 	while (list && (list->pos = ++pos))
 		list = list->next;
 }
+
+int			ps_issolved(t_psstack *stack)
+{
+	int		val;
+
+	if (!stack || !stack->next)
+		return (1);
+	val = stack->val;
+	stack = stack->next;
+	while (stack)
+	{
+		if (val < stack->val)
+			return (0);
+		val = stack->val;
+		stack = stack->next;
+	}
+	return (1);
+}
