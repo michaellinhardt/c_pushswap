@@ -6,58 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 06:45:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 13:21:38 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 02:27:20 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_stack_solve_insert(t_psdata *ps, t_psstack *new, t_psstack *next
-									, t_psstack *prev)
-{
-	while (next->next && next->val > new->val)
-		next = next->next;
-	if (next->val > new->val)
-	{
-		next->next = new;
-		new->prev = next;
-	}
-	else
-	{
-		if ((prev = next->prev))
-			prev->next = new;
-		new->prev = prev;
-		new->next = next;
-		next->prev = new;
-	}
-	if (new->val == next->val)
-		ps_error(ps, 5);
-}
-
-void		ps_stack_solve(t_psdata *ps, t_psstack **root, int id, int val)
-{
-	t_psstack	*new;
-	t_psstack	*next;
-	t_psstack	*prev;
-
-	if (!(new = (t_psstack *)malloc(sizeof(t_psstack) * 1)))
-		ps_error(ps, 666);
-	ft_bzero(new, sizeof(t_psstack));
-	new->val = val;
-	new->id = id;
-	if (!*root)
-		*root = new;
-	else
-	{
-		next = *root;
-		ps_stack_solve_insert(ps, new, next, prev);
-	}
-	while (new->prev)
-		new = new->prev;
-	*root = new;
-}
-
-void		ps_stack_add(t_psstack **root, int where, int id, int val)
+void		ps_stack_add(t_psstack **root, int where, int val)
 {
 	t_psstack	*new;
 	t_psstack	*last;
@@ -66,7 +21,6 @@ void		ps_stack_add(t_psstack **root, int where, int id, int val)
 		ps_error(NULL, 666);
 	ft_bzero(new, sizeof(t_psstack));
 	new->val = val;
-	new->id = id;
 	if (!*root)
 		*root = new;
 	else if (where == 0)
@@ -84,6 +38,52 @@ void		ps_stack_add(t_psstack **root, int where, int id, int val)
 		new->prev = last;
 		last->next = new;
 	}
+}
+
+void		ps_stack_changelist2(t_psstack *move, t_psstack **dst, int dstwhere)
+{
+	t_psstack	*tmp;
+
+	tmp = *dst;
+	if (tmp)
+	{
+		if (dstwhere)
+			while (tmp->next)
+				tmp = tmp->next;
+		move->prev = (dstwhere) ? tmp : (t_psstack *)NULL;
+		move->next = (dstwhere) ? (t_psstack *)NULL : tmp;
+		tmp->prev = (dstwhere) ? tmp->prev : move;
+		tmp->next = (dstwhere) ? move : tmp->next;
+		*dst = (dstwhere) ? *dst : move;
+	}
+	else
+	{
+		*dst = move;
+		move->next = (t_psstack *)NULL;
+		move->prev = (t_psstack *)NULL;
+	}
+}
+
+void		ps_stack_changelist(t_psstack **src, int srcwhere, t_psstack **dst
+						, int dstwhere)
+{
+	t_psstack	*move;
+	t_psstack	*tmp;
+
+	move = *src;
+	if (move->next)
+	{
+		if (srcwhere)
+				while (move->next)
+					move = move->next;
+		tmp = (srcwhere) ? move->prev : move->next;
+		tmp->next = (srcwhere) ? (t_psstack *)NULL : tmp->next;
+		tmp->prev = (srcwhere) ? tmp->prev : (t_psstack *)NULL;
+		*src = (srcwhere) ? *src : tmp;
+	}
+	else
+		*src = (t_psstack *)NULL;
+	ps_stack_changelist2(move, &(*dst), dstwhere);
 }
 
 void		ps_stack_del(t_psstack **root, int where)

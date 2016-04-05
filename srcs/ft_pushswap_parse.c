@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 13:08:10 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 02:29:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		if (val > INT_MAX || val < INT_MIN)
 			ps_error(ps, 4);
 		ps->count++;
-		ps_stack_add(&ps->st1, 0, ps->count, val);
-		ps_stack_solve(ps, &ps->st3, ps->count, val);
+		ps_stack_add(&ps->st1, 0, val);
+		ps_stack_solve(ps, &ps->st3, val);
 	}
-	ps_solve_positions(ps->st1);
-	ps_solve_positions(ps->st3);
 }

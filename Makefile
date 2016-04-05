@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/03/30 18:03:30 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/05 02:19:45 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ SRCS	=	ft_pushswap.c \
 			ft_pushswap_stack_handler.c \
 			ft_pushswap_stack_move.c \
 			ft_pushswap_stack_print.c \
-			ft_pushswap_solve_stupid.c \
-			ft_pushswap_solve_bulle.c \
 			ft_pushswap_solve_tools.c \
 			ft_pushswap_stack_free.c
 

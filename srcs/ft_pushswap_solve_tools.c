@@ -6,35 +6,52 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 15:31:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 02:27:48 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_solve_positions(t_psstack *list)
+void		ps_stack_solve_insert(t_psdata *ps, t_psstack *new, t_psstack *next
+									, t_psstack *prev)
 {
-	int		pos;
-
-	pos = 0;
-	while (list && (list->pos = ++pos))
-		list = list->next;
+	while (next->next && next->val > new->val)
+		next = next->next;
+	if (next->val > new->val)
+	{
+		next->next = new;
+		new->prev = next;
+	}
+	else
+	{
+		if ((prev = next->prev))
+			prev->next = new;
+		new->prev = prev;
+		new->next = next;
+		next->prev = new;
+	}
+	if (new->val == next->val)
+		ps_error(ps, 5);
 }
 
-int			ps_issolved(t_psstack *stack)
+void		ps_stack_solve(t_psdata *ps, t_psstack **root, int val)
 {
-	int		val;
+	t_psstack	*new;
+	t_psstack	*next;
+	t_psstack	*prev;
 
-	if (!stack || !stack->next)
-		return (1);
-	val = stack->val;
-	stack = stack->next;
-	while (stack)
+	if (!(new = (t_psstack *)malloc(sizeof(t_psstack) * 1)))
+		ps_error(ps, 666);
+	ft_bzero(new, sizeof(t_psstack));
+	new->val = val;
+	if (!*root)
+		*root = new;
+	else
 	{
-		if (val < stack->val)
-			return (0);
-		val = stack->val;
-		stack = stack->next;
+		next = *root;
+		ps_stack_solve_insert(ps, new, next, prev);
 	}
-	return (1);
+	while (new->prev)
+		new = new->prev;
+	*root = new;
 }

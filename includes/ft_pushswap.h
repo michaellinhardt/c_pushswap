@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 18:03:39 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 02:25:45 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ enum move { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr };
 
 typedef struct		s_psstack
 {
-	int					id;
-	int					pos;
 	int					val;
 	struct s_psstack	*prev;
 	struct s_psstack	*next;
@@ -40,6 +38,7 @@ typedef struct			s_psdata
 	t_psstack			*st1;
 	t_psstack			*st2;
 	t_psstack			*st3;
+	t_psstack			*st34;
 }						t_psdata;
 
 void		ps_test_free(char **argv);
@@ -49,9 +48,10 @@ void		ps_error(t_psdata *ps, int er);
 void		ps_parse_options(t_psdata *ps, char **argv);
 void		ps_parse_array(t_psdata *ps, char **argv);
 
-void		ps_stack_add(t_psstack **root, int where, int id, int val);
+void		ps_stack_add(t_psstack **root, int where, int val);
 void		ps_stack_del(t_psstack **root, int where);
-void		ps_stack_solve(t_psdata *ps, t_psstack **root, int id, int val);
+void		ps_stack_changelist(t_psstack **src, int srcwhere, t_psstack **dst
+						, int dstwhere);
 
 void		ps_stack_free(t_psdata *ps);
 
@@ -59,11 +59,6 @@ void		ps_stack_print_full(t_psstack *root);
 
 void		ps_stack_move(t_psdata *ps, enum move move);
 
-void		ps_solve_stupid(t_psdata *ps);
-
-void		ps_solve_bulle(t_psdata *ps);
-
-void		ps_solve_positions(t_psstack *list);
-int			ps_issolved(t_psstack *stack);
+void		ps_stack_solve(t_psdata *ps, t_psstack **root, int val);
 
 #endif

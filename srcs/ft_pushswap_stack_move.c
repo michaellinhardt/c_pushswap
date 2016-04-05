@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 13:43:08 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 14:57:27 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 02:29:08 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void		ps_stack_move_swap(t_psstack **root)
 {
 	t_psstack	*last;
 	t_psstack	*prev;
-	int			id;
 	int			val;
 
 	if (!(*root) || !((*root)->next))
@@ -25,58 +24,40 @@ void		ps_stack_move_swap(t_psstack **root)
 	while (last->next)
 		last = last->next;
 	prev = last->prev;
-	id = last->id;
 	val = last->val;
-	last->id = prev->id;
 	last->val = prev->val;
-	prev->id = id;
 	prev->val = val;
 }
 
 void		ps_stack_move_rotate(t_psstack **root)
 {
 	t_psstack	*stack;
-	int		id;
-	int		val;
 
 	if (!(stack = *root) || !((*root)->next))
 		return ;
 	while (stack->next)
 		stack = stack->next;
-	id = stack->id;
-	val = stack->val;
-	ps_stack_del(&(*root), 1);
-	ps_stack_add(&(*root), 0, id, val);
+	ps_stack_changelist(&(*root), 1, &(*root), 0);
 }
 
 void		ps_stack_move_revrotate(t_psstack **root)
 {
 	t_psstack	*stack;
-	int		id;
-	int		val;
 
 	if (!(stack = *root) || !((*root)->next))
 		return ;
-	id = stack->id;
-	val = stack->val;
-	ps_stack_del(&(*root), 0);
-	ps_stack_add(&(*root), 1, id, val);
+	ps_stack_changelist(&(*root), 0, &(*root), 1);
 }
 
 void		ps_stack_move_push(t_psstack **src, t_psstack **dst)
 {
 	t_psstack	*stack;
-	int		id;
-	int		val;
 
 	if (!(stack = *src))
 		return ;
 	while (stack->next)
 		stack = stack->next;
-	id = stack->id;
-	val = stack->val;
-	ps_stack_del(&(*src), 1);
-	ps_stack_add(&(*dst), 1, id, val);
+	ps_stack_changelist(&(*src), 1, &(*dst), 1);
 }
 
 void		ps_stack_move(t_psdata *ps, enum move move)

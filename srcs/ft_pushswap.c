@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/30 18:55:31 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 02:32:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			main(int argc, char **argv)
 {
 	t_psdata	ps;
 
-argv = ft_strsplit("a.out 4 5 6 1 7 3 8 0 98 7685 5528 296 28 262 38 6282 826 863 793 9 6168 376 -3", ' '); argc = 2;
+argv = ft_strsplit("a.out 3 2 1", ' '); argc = 2;
 
 	ft_bzero((void **)&ps, sizeof(t_psdata));
 	if (argc == 1)
@@ -51,20 +51,11 @@ argv = ft_strsplit("a.out 4 5 6 1 7 3 8 0 98 7685 5528 296 28 262 38 6282 826 86
 	ps_parse_options(&ps, argv);
 	ps_parse_array(&ps, argv);
 
-
-	printf("Input value:\n");
+	printf("Input value (%d item):\n", ps.count);
 	ps_stack_print_full(ps.st1);
-
-	if (!ps_issolved(ps.st1))
-		ps_solve_stupid(&ps);
-
-	printf("nbmove: %d\n", ps.nbmove);
-	printf("Pile A:\n");
-	ps_stack_print_full(ps.st1);
-	printf("Pile B:\n");
-	ps_stack_print_full(ps.st2);
 	printf("Solution:\n");
 	ps_stack_print_full(ps.st3);
+
 
 
 	// ps_stack_move(&ps, sa);
