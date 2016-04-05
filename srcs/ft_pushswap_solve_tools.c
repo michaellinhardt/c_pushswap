@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/05 02:27:48 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 05:44:22 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void		ps_stack_solve_insert(t_psdata *ps, t_psstack *new, t_psstack *next
 void		ps_stack_solve(t_psdata *ps, t_psstack **root, int val)
 {
 	t_psstack	*new;
-	t_psstack	*next;
 	t_psstack	*prev;
 
 	if (!(new = (t_psstack *)malloc(sizeof(t_psstack) * 1)))
@@ -47,10 +46,7 @@ void		ps_stack_solve(t_psdata *ps, t_psstack **root, int val)
 	if (!*root)
 		*root = new;
 	else
-	{
-		next = *root;
-		ps_stack_solve_insert(ps, new, next, prev);
-	}
+		ps_stack_solve_insert(ps, new, *root, prev);
 	while (new->prev)
 		new = new->prev;
 	*root = new;

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/05 02:32:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/05 05:40:50 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			main(int argc, char **argv)
 {
 	t_psdata	ps;
 
-argv = ft_strsplit("a.out 3 2 1", ' '); argc = 2;
+argv = ft_strsplit("a.out 3 2 1 8 -3 12 0", ' '); argc = 2;
 
 	ft_bzero((void **)&ps, sizeof(t_psdata));
 	if (argc == 1)
@@ -56,7 +56,7 @@ argv = ft_strsplit("a.out 3 2 1", ' '); argc = 2;
 	printf("Solution:\n");
 	ps_stack_print_full(ps.st3);
 
-
+	// ps_issolved(&ps);
 
 	// ps_stack_move(&ps, sa);
 	// ps_stack_move(&ps, pb);
