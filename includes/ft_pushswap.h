@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 07:35:42 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 09:02:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct			s_psdata
 	int					nbmove;
 	int					i;
 	int					j;
+	char				cwhi[7];
+	char				cyel[7];
+	char				cblu[7];
+	char				cred[7];
 	t_psstack			*st1;
 	t_psstack			*st2;
 	t_psstack			*st3;
@@ -62,5 +66,7 @@ void		ps_presolve_add(t_psdata *ps, int val);
 
 int			ps_verbose(t_psdata *ps, int msg);
 void		ps_verbose2(t_psdata *ps, int msg);
+
+void		ps_colors(t_psdata *ps);
 
 #endif

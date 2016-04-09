@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_stack_handler.c                        :+:      :+:    :+:   */
+/*   ft_pushswap_handler.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 06:45:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/05 02:27:20 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 08:05:41 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		ps_stack_add(t_psstack **root, int where, int val)
 	t_psstack	*last;
 
 	if (!(new = (t_psstack *)malloc(sizeof(t_psstack) * 1)))
-		ps_error(NULL, 666);
+		ps_error(NULL, 100);
 	ft_bzero(new, sizeof(t_psstack));
 	new->val = val;
 	if (!*root)

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 07:40:16 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 09:08:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			main(int argc, char **argv)
 {
 	t_psdata	ps;
 
-argv = ft_strsplit("a.out -v 3 2 1 8 -3 12 0", ' '); argc = 2;
+argv = ft_strsplit("a.out -vc 3 2 1 8 -3 12 0", ' '); argc = 2;
 
 	ft_bzero((void **)&ps, sizeof(t_psdata));
 	if (argc == 1)

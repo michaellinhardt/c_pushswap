@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 07:36:52 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 09:07:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		ps_parse_options(t_psdata *ps, char **argv)
 			ps_error(ps, 2);
 	}
 	ps->opts = 1;
+	ps_colors(ps);
 }
 
 void		ps_parse_array(t_psdata *ps, char **argv)
@@ -56,5 +57,5 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		ps_presolve_add(ps, val);
 	}
 	if (ps->verb)
-		ft_printf("[PARSE] %d value are stored in ps.st1\n", ps->count);
+		ft_printf("%s[PARSE] %d value are stored in ps.st1%s\n", ps->cblu, ps->count, ps->cwhi);
 }

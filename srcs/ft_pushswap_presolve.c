@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 07:37:14 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 08:05:33 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ps_presolve_add(t_psdata *ps, int val)
 	t_psstack	*prev;
 
 	if (!(new = (t_psstack *)malloc(sizeof(t_psstack) * 1)))
-		ps_error(ps, 666);
+		ps_error(ps, 100);
 	ft_bzero(new, sizeof(t_psstack));
 	new->val = val;
 	if (!ps->st3)

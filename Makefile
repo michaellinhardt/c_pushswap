@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/09 06:39:46 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/09 09:06:40 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=	ft_pushswap.c \
 			ft_pushswap_print.c \
 			ft_pushswap_presolve.c \
 			ft_pushswap_verbose.c \
+			ft_pushswap_colors.c \
 			ft_pushswap_free.c
 
 INCLUDES 	= -I./includes/ -I./libft/includes/
