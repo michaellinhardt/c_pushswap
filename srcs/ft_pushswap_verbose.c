@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 08:09:58 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 09:16:32 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	ps_verbose_color(t_psdata *ps, int msg)
 	if (!ps->col)
 		return ;
 	if (msg == 0)
-		ft_putstr("\e[39m");
+		ft_putstr(ps->cwhi);
 	else if (msg >= 1 && msg <= 9)
-		ft_putstr("\e[31m");
+		ft_putstr(ps->cred);
 	else
-		ft_putstr("\e[34m");
+		ft_putstr(ps->cyel);
 }
 
 int		ps_verbose(t_psdata *ps, int msg)

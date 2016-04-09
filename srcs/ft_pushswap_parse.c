@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 09:07:14 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 09:20:17 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,20 @@ void		ps_parse_options(t_psdata *ps, char **argv)
 		ps_error(ps, 2);
 	if (argv[1][1] && argv[1][1] >= '0' && argv[1][1] <= '9')
 		return ;
+	ps_colors(ps);
 	while (argv[1][++i])
 	{
 		if (argv[1][i] == 'v' && (ps->verb = 1))
 			ps_verbose(ps, 10);
 		else if (argv[1][i] == 'c' && (ps->col = 1))
+		{
+			ps_colors(ps);
 			ps_verbose(ps, 11);
+		}
 		else
 			ps_error(ps, 2);
 	}
 	ps->opts = 1;
-	ps_colors(ps);
 }
 
 void		ps_parse_array(t_psdata *ps, char **argv)
@@ -57,5 +60,6 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		ps_presolve_add(ps, val);
 	}
 	if (ps->verb)
-		ft_printf("%s[PARSE] %d value are stored in ps.st1%s\n", ps->cblu, ps->count, ps->cwhi);
+		ft_printf("%s[PARSE] %s%d%s value are stored in ps.st1%s\n", ps->cyel
+			, ps->cred, ps->count, ps->cyel, ps->cwhi);
 }
