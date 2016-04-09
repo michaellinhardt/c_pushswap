@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 09:02:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 10:35:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ps_stack_print_full(t_psstack *root);
 void		ps_stack_move(t_psdata *ps, enum move move);
 
 void		ps_presolve_add(t_psdata *ps, int val);
+int			ps_presolve_start(t_psdata *ps, t_psstack *item, int count);
 
 int			ps_verbose(t_psdata *ps, int msg);
 void		ps_verbose2(t_psdata *ps, int msg);

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 09:18:52 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 10:54:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			main(int argc, char **argv)
 {
 	t_psdata	ps;
 
-argv = ft_strsplit("a.out -vc 3 2 1 8 -3 12 0", ' '); argc = 2;
+argv = ft_strsplit("a.out -vc 1 8 3 4 5 6 7 2 10 9", ' '); argc = 2;
 
 	ft_bzero((void **)&ps, sizeof(t_psdata));
 	if (argc == 1)
@@ -40,6 +40,12 @@ argv = ft_strsplit("a.out -vc 3 2 1 8 -3 12 0", ' '); argc = 2;
 	ps_parse_options(&ps, argv);
 	ps_parse_array(&ps, argv);
 
+	t_psstack *test;
+	test = ps.st1; int i = 5;
+	while (i--)
+		test = test->next;
+	ft_printf("%d\n", test->val);
+	ps_presolve_start(&ps, test, 9);
 
 	ft_printf("Input value (%d item):\n", ps.count);
 	ps_stack_print_full(ps.st1);
