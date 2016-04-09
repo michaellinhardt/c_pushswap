@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 04:32:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 04:37:23 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct			s_psdata
 	t_psstack			*st1;
 	t_psstack			*st2;
 	t_psstack			*st3;
-	t_psstack			*st34;
 }						t_psdata;
 
 void		ps_test_free(char **argv);
@@ -59,6 +58,6 @@ void		ps_stack_print_full(t_psstack *root);
 
 void		ps_stack_move(t_psdata *ps, enum move move);
 
-void		ps_stack_presolve_add(t_psdata *ps, t_psstack **root, int val);
+void		ps_presolve_add(t_psdata *ps, t_psstack **root, int val);
 
 #endif
