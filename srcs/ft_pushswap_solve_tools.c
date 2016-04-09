@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/05 05:44:22 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 04:32:13 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		ps_stack_solve_insert(t_psdata *ps, t_psstack *new, t_psstack *next
 		ps_error(ps, 5);
 }
 
-void		ps_stack_solve(t_psdata *ps, t_psstack **root, int val)
+void		ps_stack_presolve_add(t_psdata *ps, t_psstack **root, int val)
 {
 	t_psstack	*new;
 	t_psstack	*prev;
