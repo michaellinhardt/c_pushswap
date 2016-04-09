@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_stack_print.c                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/29 06:45:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/05 02:30:28 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/01/18 19:52:53 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/04/09 06:04:51 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pushswap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void		ps_stack_print_full(t_psstack *root)
+# include "libft.h"
+# define BUFF_SIZE 8
+# define MAP 0
+# define F ft_bootstrap
+
+typedef struct		s_gnl
 {
-	t_psstack *stack;
+	char			b[BUFF_SIZE + 1];
+	int				fd;
+	char			*t;
+	int				r;
+	int				i;
+	char			*s;
+	struct s_gnl	*next;
+}					t_gnl;
 
-	stack = root;
-	if (stack)
-	{
-		printf("********\n");
-		printf("%-6s\n", "VAL");
-		while (stack)
-		{
-			printf("%-6d\n", stack->val);
-			stack = stack->next;
-		}
-		printf("********\n");
-	}
-}
+int					get_next_line(int fd, char **line);
+void				ft_bootstrap(char **line);
+
+#endif

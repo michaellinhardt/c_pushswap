@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 10:06:49 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/21 19:41:34 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/31 19:15:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	ft_ldtoa_round(t_ldtoa *db)
 	db->ret[db->i] = ((db->ret[db->i] - '0') + 1) + '0';
 }
 
-
 char		*ft_ldtoa(long double ld, int preci)
 {
 	t_ldtoa		db;
@@ -58,7 +57,7 @@ char		*ft_ldtoa(long double ld, int preci)
 	ft_bzero(&db, sizeof(t_ldtoa));
 	if (!(db.ret = ft_strnew(2048)))
 		return ((char *)NULL);
-	if (( 1 / ld) < 0 && (db.isneg = 1))
+	if ((1 / ld) < 0 && (db.isneg = 1))
 	{
 		db.ret[db.i++] = '-';
 		ld *= -1;

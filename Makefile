@@ -6,25 +6,26 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/05 02:19:45 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/09 06:39:46 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	push_swap
 CC		=	gcc
-FLAGS1	=	-g
-FLAGS2	=	-Wall -Wextra -Werror -g
-FLAGS	=	$(FLAGS1)
+CFLAGS1	=	-g
+CFLAGS2	=	-Wall -Wextra -Werror -g
+CFLAGS	=	$(CFLAGS1)
 
 SRCS	=	ft_pushswap.c \
 			ft_pushswap_parse.c \
-			ft_pushswap_stack_handler.c \
-			ft_pushswap_stack_move.c \
-			ft_pushswap_stack_print.c \
-			ft_pushswap_solve_tools.c \
-			ft_pushswap_stack_free.c
+			ft_pushswap_handler.c \
+			ft_pushswap_move.c \
+			ft_pushswap_print.c \
+			ft_pushswap_presolve.c \
+			ft_pushswap_verbose.c \
+			ft_pushswap_free.c
 
-HDIR 	=	./includes/
+INCLUDES 	= -I./includes/ -I./libft/includes/
 LDIR 	= 	./libft/
 SRCSDIR = 	./srcs/
 SRC 	=	$(addprefix $(SRCSDIR), $(SRCS))
@@ -43,8 +44,8 @@ all: $(NAME)
 $(NAME):
 	@echo "$(W8) $(YE)make -C $(LDIR)$(WH)"
 	@make -C $(LDIR)
-	@echo "$(W8) $(YE)$(CC) $(FLAGS) (SRC) -o $(NAME) -I$(HDIR) -L$(LDIR) -lft$(WH)"
-	@$(CC) $(FLAGS) $(SRC) -o $(NAME) -I$(HDIR) -I./ -L$(LDIR) -lft
+	@echo "$(W8) $(YE)$(CC) $(CFLAGS) (SRC) -o $(NAME) $(INCLUDES) -L$(LDIR) -lft$(WH)"
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) $(INCLUDES) -L$(LDIR) -lft
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 clean:
@@ -63,12 +64,14 @@ fclean: clean
 
 re: fclean all
 
-test: re
-	@echo "$(W8) $(YE)time ./$(NAME)"
+test: all -test fclean
+-test:
+	@echo "$(W8) $(YE)time ./$(NAME)$(WH)"
 	@time ./$(NAME)
 	@echo "$(OK) $(GR)Done!$(WH)"
 
-leaks: re -leaks
+leaks: all -leaks fclean
+
 -leaks:
 	@echo "$(W8) $(YE)valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)$(WH)"
 	@-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)

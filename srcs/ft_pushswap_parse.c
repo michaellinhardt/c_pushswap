@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 04:32:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 07:36:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void		ps_parse_options(t_psdata *ps, char **argv)
 		return ;
 	while (argv[1][++i])
 	{
-		if (argv[1][i] == 'v')
-			ps->verb = 1;
-		else if (argv[1][i] == 'c')
-			ps->col = 1;
+		if (argv[1][i] == 'v' && (ps->verb = 1))
+			ps_verbose(ps, 10);
+		else if (argv[1][i] == 'c' && (ps->col = 1))
+			ps_verbose(ps, 11);
 		else
 			ps_error(ps, 2);
 	}
@@ -50,8 +50,11 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 				ps_error(ps, 3);
 		val = ft_atoimax(argv[i]);
 		if (val > INT_MAX || val < INT_MIN)
-			ps_error(ps, 4);
+			ps_error(ps, 3);
 		ps->count++;
 		ps_stack_add(&ps->st1, 0, val);
+		ps_presolve_add(ps, val);
 	}
+	if (ps->verb)
+		ft_printf("[PARSE] %d value are stored in ps.st1\n", ps->count);
 }

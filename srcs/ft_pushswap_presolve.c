@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_solve_tools.c                          :+:      :+:    :+:   */
+/*   ft_pushswap_presolve.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 04:39:24 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 07:37:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_presolve_insert(t_psdata *ps, t_psstack *new, t_psstack *next
-									, t_psstack *prev)
+void		ps_presolve_insert(t_psdata *ps, t_psstack *new, t_psstack *prev)
 {
+	t_psstack	*next;
+
+	next = ps->st3;
 	while (next->next && next->val > new->val)
 		next = next->next;
 	if (next->val > new->val)
@@ -31,10 +33,10 @@ void		ps_presolve_insert(t_psdata *ps, t_psstack *new, t_psstack *next
 		next->prev = new;
 	}
 	if (new->val == next->val)
-		ps_error(ps, 5);
+		ps_error(ps, 4);
 }
 
-void		ps_presolve_add(t_psdata *ps, t_psstack **root, int val)
+void		ps_presolve_add(t_psdata *ps, int val)
 {
 	t_psstack	*new;
 	t_psstack	*prev;
@@ -43,11 +45,11 @@ void		ps_presolve_add(t_psdata *ps, t_psstack **root, int val)
 		ps_error(ps, 666);
 	ft_bzero(new, sizeof(t_psstack));
 	new->val = val;
-	if (!*root)
-		*root = new;
+	if (!ps->st3)
+		ps->st3 = new;
 	else
-		ps_presolve_insert(ps, new, *root, prev);
+		ps_presolve_insert(ps, new, prev);
 	while (new->prev)
 		new = new->prev;
-	*root = new;
+	ps->st3 = new;
 }
