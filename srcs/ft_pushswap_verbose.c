@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 09:16:32 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/11 15:21:42 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void		ps_verbose_init(t_psdata *ps, char ret[101][512])
 
 	ft_memcpy(ret[10], "[PARSE] verbose activated\n", 31);
 	ft_memcpy(ret[11], "[PARSE] color activated\n", 31);
+
+	ft_memcpy(ret[20], "[ALGO] expected solution:\n", 26);
 
 	ft_memcpy(ret[100], "[ERROR] cant malloc\n", 20);
 }

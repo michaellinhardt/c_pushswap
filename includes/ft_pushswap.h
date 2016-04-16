@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 10:35:35 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/12 14:05:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct		s_psstack
 
 typedef struct			s_psdata
 {
+	int					err;
+	int					errswap;
+	int					errbig;
 	int					opts;
 	int					verb;
 	int					col;
@@ -58,12 +61,13 @@ void		ps_stack_changelist(t_psstack **src, int srcwhere, t_psstack **dst
 
 void		ps_stack_free(t_psdata *ps);
 
-void		ps_stack_print_full(t_psstack *root);
+void		ps_stack_print_full(t_psdata *ps, t_psstack *root);
 
 void		ps_stack_move(t_psdata *ps, enum move move);
 
 void		ps_presolve_add(t_psdata *ps, int val);
-int			ps_presolve_start(t_psdata *ps, t_psstack *item, int count);
+void		ps_presolve_eval(t_psdata *ps);
+int			ps_presolve(t_psdata *ps);
 
 int			ps_verbose(t_psdata *ps, int msg);
 void		ps_verbose2(t_psdata *ps, int msg);

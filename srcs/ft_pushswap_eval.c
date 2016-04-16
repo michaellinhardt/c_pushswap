@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_print.c                                :+:      :+:    :+:   */
+/*   ft_pushswap_eval.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/29 06:45:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/11 15:42:49 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/04/16 04:25:32 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_stack_print_full(t_psdata *ps, t_psstack *root)
+void		ps_presolve_eval(t_psdata *ps)
 {
-	t_psstack *stack;
+	// fucking fonction qui détect les erreur !
+	// Test numério 9274893948.. corriger virtuellement les erreur rencontrer
+	// Oui mais pkoi ?
+	// Etre en mesure de lister les erreur convenablement, pour les swap
+	//
+	//
+	//
+	// FONCTION RECURSIVE
 
-	stack = root;
-	if (stack)
-	{
-		ft_printf("%s%-6s ", ps->cblu, "[STACK] ");
-		while (stack)
-		{
-			ft_printf("%-3d ", stack->val);
-			stack = stack->next;
-		}
-		ft_printf("%s\n", ps->cwhi);
-	}
 }

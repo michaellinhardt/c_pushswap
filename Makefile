@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/09 09:06:40 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/11 15:23:20 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,18 @@ fclean: clean
 	@/bin/rm -rf ./*.dSYM
 	@echo "$(OK) $(GR)Done!$(WH)"
 
+fclean2:
+	@echo "$(W8) $(YE)/bin/rm -rf $(NAME)$(WH)"
+	@/bin/rm -rf $(NAME)
+	@echo "$(OK) $(GR)Done!$(WH)"
+	@echo "$(W8) $(YE)/bin/rm -rf ./*.dSYM$(WH)"
+	@/bin/rm -rf ./*.dSYM
+	@echo "$(OK) $(GR)Done!$(WH)"
+
 re: fclean all
 
 test: all -test fclean
+re-test: re -test fclean2
 -test:
 	@echo "$(W8) $(YE)time ./$(NAME)$(WH)"
 	@time ./$(NAME)

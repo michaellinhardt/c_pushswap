@@ -59,7 +59,4 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		ps_stack_add(&ps->st1, 0, val);
 		ps_presolve_add(ps, val);
 	}
-	if (ps->verb)
-		ft_printf("%s[PARSE] %s%d%s value are stored in ps.st1%s\n", ps->cyel
-			, ps->cred, ps->count, ps->cyel, ps->cwhi);
 }
