@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/18 20:24:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/18 21:27:20 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct			s_psdata
 	char				cyel[7];
 	char				cblu[7];
 	char				cred[7];
+	char				*log1;
+	char				*nb1;
+	char				*log2;
+	char				*nb2;
 	t_psstack			*st1a;
 	t_psstack			*st1b;
 	t_psstack			*st2a;

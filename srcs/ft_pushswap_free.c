@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 08:00:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/18 01:10:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/18 21:36:43 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void		ps_stack_free(t_psdata *ps)
 	ps_stack_free_one(ps, ps->st1b);
 	ps_stack_free_one(ps, ps->st2a);
 	ps_stack_free_one(ps, ps->st2b);
+	ft_strdel(&ps->log1);
 }

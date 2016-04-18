@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/18 21:22:16 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/18 21:40:58 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ argv = ft_strsplit("a.out -v 2 1 3 6 5 8", ' '); argc = 2;
 	ps_move1(&ps, pa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
 	ps_move1(&ps, pa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
 	ps_move1(&ps, pa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
+	ft_printf("%s %d\n\n", ps.log1, ps.nb1);
 
 ps_test_free(argv);
 
