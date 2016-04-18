@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 09:48:32 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/18 01:51:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ void		ps_parse_options(t_psdata *ps, char **argv)
 	ps->opts = 1;
 }
 
+void		ps_parse_add(t_psdata *ps, t_psstack **stack, int val)
+{
+	t_psstack *new;
+	t_psstack *list;
+
+	if (!(new = (t_psstack *)malloc(sizeof(t_psstack))))
+		ps_error(ps, 666);
+	ft_bzero(new, sizeof(t_psstack));
+	new->val = val;
+	if (!*stack)
+		*stack = new;
+	list = ((*stack)->next) ? (*stack)->next : *stack;
+	list->prev = new;
+	new->next = list;
+	new->prev = *stack;
+	(*stack)->next = new;
+}
+
 void		ps_parse_array(t_psdata *ps, char **argv)
 {
 	int			i;
@@ -56,7 +74,7 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		if (val > INT_MAX || val < INT_MIN)
 			ps_error(ps, 3);
 		ps->count++;
-		ps_stack_add(&ps->st1, 0, val);
-		ps_presolve_add(ps, val);
+		ps_parse_add(ps, &ps->st1a, val);
+		ps_parse_add(ps, &ps->st2a, val);
 	}
 }

@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/11 15:23:20 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/18 20:24:28 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,9 @@ CFLAGS	=	$(CFLAGS1)
 
 SRCS	=	ft_pushswap.c \
 			ft_pushswap_parse.c \
-			ft_pushswap_handler.c \
-			ft_pushswap_move.c \
-			ft_pushswap_print.c \
-			ft_pushswap_presolve.c \
+			ft_pushswap_move1.c \
 			ft_pushswap_verbose.c \
-			ft_pushswap_colors.c \
+			ft_pushswap_verbose_init.c \
 			ft_pushswap_free.c
 
 INCLUDES 	= -I./includes/ -I./libft/includes/

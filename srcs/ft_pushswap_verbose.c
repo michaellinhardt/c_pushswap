@@ -6,25 +6,45 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/11 15:21:42 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/18 20:14:38 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_verbose_init(t_psdata *ps, char ret[101][512])
+void		ps_colors(t_psdata *ps)
 {
-	ft_memcpy(ret[1], "[ERROR] too few argument(s)\n", 28);
-	ft_memcpy(ret[2], "[ERROR] bad option found, use -h for help\n", 42);
-	ft_memcpy(ret[3], "[ERROR] only int are allowed\n", 29);
-	ft_memcpy(ret[4], "[ERROR] duplicated value\n", 25);
+	if (ps->col == 0)
+	{
+		ft_bzero(ps->cwhi, 7);
+		ft_bzero(ps->cyel, 7);
+		ft_bzero(ps->cblu, 7);
+		ft_bzero(ps->cred, 7);
+	}
+	else
+	{
+		ft_memcpy(ps->cwhi, "\e[39m\0", 6);
+		ft_memcpy(ps->cblu, "\e[34m\0", 6);
+		ft_memcpy(ps->cyel, "\e[33m\0", 6);
+		ft_memcpy(ps->cred, "\e[31m\0", 6);
+	}
+}
 
-	ft_memcpy(ret[10], "[PARSE] verbose activated\n", 31);
-	ft_memcpy(ret[11], "[PARSE] color activated\n", 31);
+void		ps_stack_print(t_psdata *ps, t_psstack *read)
+{
+	int			stop;
 
-	ft_memcpy(ret[20], "[ALGO] expected solution:\n", 26);
-
-	ft_memcpy(ret[100], "[ERROR] cant malloc\n", 20);
+	if (!read && ft_printf("%s%-6s%s\n", ps->cblu, "[STACK] empty", ps->cwhi))
+		return ;
+	stop = read->val;
+	read = read->next;
+	ft_printf("%s%-6s ", ps->cblu, "[STACK] ");
+	while (read->val != stop)
+	{
+		ft_printf("%-3d ", read->val);
+		read = read->next;
+	}
+	ft_printf("%-3d%s\n", read->val, ps->cwhi);
 }
 
 void	ps_verbose2(t_psdata *ps, int msg)
