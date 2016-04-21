@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:19:17 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/21 06:21:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ int			ps_stupid(t_psdata *ps)
 {
 	t_stupid	stu;
 	t_psstack	*destroy;
-
 
 	if (ps_issolved(ps, ps->st2a) && ps_stupid_rotate(ps))
 		return (1);
