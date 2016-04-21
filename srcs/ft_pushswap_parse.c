@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/18 01:51:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/21 06:15:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ void		ps_parse_add(t_psdata *ps, t_psstack **stack, int val)
 	new->val = val;
 	if (!*stack)
 		*stack = new;
-	list = ((*stack)->next) ? (*stack)->next : *stack;
-	list->prev = new;
-	new->next = list;
-	new->prev = *stack;
-	(*stack)->next = new;
+	list = ((*stack)->n) ? (*stack)->n : *stack;
+	list->p = new;
+	new->n = list;
+	new->p = *stack;
+	(*stack)->n = new;
 }
 
 void		ps_parse_array(t_psdata *ps, char **argv)
@@ -74,7 +74,12 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		if (val > INT_MAX || val < INT_MIN)
 			ps_error(ps, 3);
 		ps->count++;
-		ps_parse_add(ps, &ps->st1a, val);
+		ps->min = (ps->count == 1) ? val : ps->min;
+		ps->min = (val < ps->min) ? val : ps->min;
+		ps->max = (ps->count == 1) ? val : ps->max;
+		ps->max = (val > ps->max) ? val : ps->max;
 		ps_parse_add(ps, &ps->st2a, val);
+		ps_parse_add(ps, &ps->st3a, val);
+		ps_parse_add(ps, &ps->st4a, val);
 	}
 }

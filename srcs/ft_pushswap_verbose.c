@@ -37,12 +37,12 @@ void		ps_stack_print(t_psdata *ps, t_psstack *read)
 	if (!read && ft_printf("%s%-6s%s\n", ps->cblu, "[STACK] empty", ps->cwhi))
 		return ;
 	stop = read->val;
-	read = read->next;
+	read = read->n;
 	ft_printf("%s%-6s ", ps->cblu, "[STACK] ");
 	while (read->val != stop)
 	{
 		ft_printf("%-3d ", read->val);
-		read = read->next;
+		read = read->n;
 	}
 	ft_printf("%-3d%s\n", read->val, ps->cwhi);
 }

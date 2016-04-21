@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/18 21:40:58 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/21 06:18:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,55 @@ void		ps_error(t_psdata *ps, int er)
 	exit(1);
 }
 
+void		ps_display(t_psdata *ps)
+{
+	int		winner;
+	int		len;
+	char	*s;
+
+	winner = (ps->nb2 <= ps->nb3) ? 2 : 3;
+	if (winner == 2)
+		winner = (ps->nb2 <= ps->nb4) ? 2 : 4;
+	else
+		winner = (ps->nb3 <= ps->nb4) ? 3 : 4;
+	if (winner == 2)
+		s = ps->log2;
+	if (winner == 3)
+		s = ps->log3;
+	if (winner == 4)
+		s = ps->log4;
+	if (!s)
+		ft_printf("\n");
+	else if (s && s++)
+	ft_printf("%s\n", s);
+}
+
 int			main(int argc, char **argv)
 {
 	t_psdata	ps;
 
-argv = ft_strsplit("a.out -v 2 1 3 6 5 8", ' '); argc = 2;
+argv = ft_strsplit("a.out -v 8 3 2 1", ' '); argc = 2;
 
 	ft_bzero((void **)&ps, sizeof(t_psdata));
 	if (argc == 1)
 		ps_error(&ps, 1);
 	ps_parse_options(&ps, argv);
 	ps_parse_array(&ps, argv);
-	if (ps.verb && ft_printf("%s[PARSE] %s%d%s value are stored:%s\n"
-		, ps.cyel, ps.cred, ps.count, ps.cyel, ps.cwhi))
-		ps_stack_print(&ps, ps.st1a);
-
-	ft_printf("\n\n");
-	ps_move1(&ps, sa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, pb); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, pb); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, pb); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, sa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, pa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, pa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ps_move1(&ps, pa); ps_stack_print(&ps, ps.st1a); ps_stack_print(&ps, ps.st1b);
-	ft_printf("%s %d\n\n", ps.log1, ps.nb1);
+	if (ps.verb && ft_printf("%s[PARSE] %d value are stored:%s\n"
+		, ps.cyel, ps.count, ps.cwhi))
+		ps_stack_print(&ps, ps.st2a);
+	argc = (ps.verb) ? ft_printf("%s[PARSE] min: %d, max: %d, total: %d%s\n",
+		ps.cyel,ps.min, ps.max, ps.count, ps.cwhi) : argc;
+	argc = ((ps_verbose(&ps, 5)) && (ps_solv(&ps)) && (ps_stupid(&ps))) ? 1 : 0;
+	argc = (ps.verb) ? ft_printf("%s[ALGO] stupid finish in %d move(s)%s\n",
+		ps.cyel, ps.nb2, ps.cwhi) : argc;
+	argc = ((ps_verbose(&ps, 21)) && (ps_bubble1(&ps))) ? 1 : 0;
+	argc = (ps.verb) ? ft_printf("%s[ALGO] bubble1 finish in %d move(s)%s\n",
+		ps.cyel, ps.nb3, ps.cwhi) : argc;
+	argc = ((ps_verbose(&ps, 22)) && (ps_bubble2(&ps))) ? 1 : 0;
+	argc = (ps.verb) ? ft_printf("%s[ALGO] bubble2 finish in %d move(s)%s\n",
+		ps.cyel, ps.nb4, ps.cwhi) : argc;
+	ps_display(&ps);
 
 ps_test_free(argv);
 
