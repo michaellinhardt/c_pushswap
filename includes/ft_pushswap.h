@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:13:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/21 06:45:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct			s_psdata
 	char				cyel[7];
 	char				cblu[7];
 	char				cred[7];
+	char				*log1;
 	char				*log2;
 	char				*log3;
 	char				*log4;
@@ -56,6 +57,8 @@ typedef struct			s_psdata
 	int					nb3;
 	int					nb4;
 	t_psstack			*s;
+	t_psstack			*st1a;
+	t_psstack			*st1b;
 	t_psstack			*st2a;
 	t_psstack			*st2b;
 	t_psstack			*st3a;
@@ -70,6 +73,7 @@ void		ps_error(t_psdata *ps, int er);
 
 void		ps_parse_options(t_psdata *ps, char **argv);
 void		ps_parse_array(t_psdata *ps, char **argv);
+void		ps_parse_double(t_psdata *ps);
 
 void		ps_stack_free(t_psdata *ps);
 
@@ -94,5 +98,6 @@ int			ps_issolved(t_psdata *ps, t_psstack *x);
 
 int			ps_bubble1(t_psdata *ps);
 int			ps_bubble2(t_psdata *ps);
+int			ps_bubble3(t_psdata *ps);
 
 #endif

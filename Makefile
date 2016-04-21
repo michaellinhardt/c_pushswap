@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/21 06:20:10 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/21 06:31:44 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ CFLAGS	=	$(CFLAGS1)
 SRCS	=	ft_pushswap.c \
 			ft_pushswap_parse.c \
 			ft_pushswap_solver.c \
+			ft_pushswap_bubble3.c \
+			ft_pushswap_move1.c \
 			ft_pushswap_stupid.c \
 			ft_pushswap_move2.c \
 			ft_pushswap_bubble1.c \

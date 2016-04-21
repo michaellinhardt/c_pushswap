@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:18:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/21 06:35:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void		ps_verbose_init(t_psdata *ps, char ret[101][512])
 	ft_memcpy(ret[21], "[ALGO] run algo bubble1..\n", 26);
 	ft_memcpy(ret[22], "[ALGO] run algo bubble2..\n", 26);
 	ft_memcpy(ret[23], "[ALGO] run algo claptrap..\n", 27);
+	ft_memcpy(ret[24], "[ALGO] run algo bubble3..\n", 26);
 	ft_memcpy(ret[100], "[ERROR] cant malloc\n", 20);
 }

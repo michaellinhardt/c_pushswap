@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 08:00:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:13:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/21 06:34:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ void		ps_stack_free(t_psdata *ps)
 {
 	t_psstack *destroy;
 
+	ps_stack_free_one(ps, ps->st1a);
+	ps_stack_free_one(ps, ps->st1b);
 	ps_stack_free_one(ps, ps->st2a);
 	ps_stack_free_one(ps, ps->st2b);
 	ps_stack_free_one(ps, ps->st3a);
 	ps_stack_free_one(ps, ps->st3b);
 	ps_stack_free_one(ps, ps->st4a);
 	ps_stack_free_one(ps, ps->st4b);
+	ft_strdel(&ps->log1);
 	ft_strdel(&ps->log2);
 	ft_strdel(&ps->log3);
 	ft_strdel(&ps->log4);
