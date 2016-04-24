@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 01:11:42 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 07:32:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,39 @@ void		ps_move3_log(t_psdata *ps, enum move move)
 		ft_printf("%-!%s rrr", &ps->log3, tmp);
 }
 
+void		ps_move3_print(t_psdata *ps, enum move move)
+{
+	return ;
+	if (!ps->verb)
+		return ;
+	if (move == sa)
+		ft_printf("[BUBBLE1] move: sa\n");
+	if (move == sb)
+		ft_printf("[BUBBLE1] move: sb\n");
+	if (move == ss)
+		ft_printf("[BUBBLE1] move: ss\n");
+	if (move == pa)
+		ft_printf("[BUBBLE1] move: pa\n");
+	if (move == pb)
+		ft_printf("[BUBBLE1] move: pb\n");
+	if (move == ra)
+		ft_printf("[BUBBLE1] move: ra\n");
+	if (move == rb)
+		ft_printf("[BUBBLE1] move: rb\n");
+	if (move == rr)
+		ft_printf("[BUBBLE1] move: rr\n");
+	if (move == rra)
+		ft_printf("[BUBBLE1] move: rra\n");
+	if (move == rrb)
+		ft_printf("[BUBBLE1] move: rrb\n");
+	if (move == rrr)
+		ft_printf("[BUBBLE1] move: rrr\n");
+}
+
 void		ps_move3(t_psdata *ps, enum move move)
 {
+	if (ps->verb)
+		ps_move3_print(ps, move);
 	if (move == sa || move == ss)
 		ps_move3_swap(ps, ps->st3a);
 	if (move == sb || move == ss)

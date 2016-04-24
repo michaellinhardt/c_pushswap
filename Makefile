@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/21 06:31:44 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/24 07:23:12 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,14 @@ SRCS	=	ft_pushswap.c \
 			ft_pushswap_bubble3.c \
 			ft_pushswap_move1.c \
 			ft_pushswap_stupid.c \
+			ft_pushswap_stupid_pushb.c \
 			ft_pushswap_move2.c \
 			ft_pushswap_bubble1.c \
 			ft_pushswap_move3.c \
 			ft_pushswap_bubble2.c \
 			ft_pushswap_move4.c \
+			ft_pushswap_stupid2.c \
+			ft_pushswap_move5.c \
 			ft_pushswap_verbose.c \
 			ft_pushswap_verbose_init.c \
 			ft_pushswap_free.c

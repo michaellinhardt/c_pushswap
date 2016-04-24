@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/18 20:14:38 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 08:31:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ void		ps_stack_print(t_psdata *ps, t_psstack *read)
 {
 	int			stop;
 
-	if (!read && ft_printf("%s%-6s%s\n", ps->cblu, "[STACK] empty", ps->cwhi))
+	if (!read && ft_printf("%s%s%s\n", ps->cblu, "[STACK] empty", ps->cwhi))
 		return ;
 	stop = read->val;
 	read = read->n;
-	ft_printf("%s%-6s ", ps->cblu, "[STACK] ");
+	ft_printf("%s%s ", ps->cblu, "[STACK] ");
 	while (read->val != stop)
 	{
-		ft_printf("%-3d ", read->val);
+		ft_printf("%d ", read->val);
 		read = read->n;
 	}
-	ft_printf("%-3d%s\n", read->val, ps->cwhi);
+	ft_printf("%d%s\n", read->val, ps->cwhi);
 }
 
 void	ps_verbose2(t_psdata *ps, int msg)

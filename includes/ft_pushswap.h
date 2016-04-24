@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:45:14 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 07:28:12 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,21 @@ enum move { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr };
 
 typedef struct			s_stupid
 {
+	int					i;
+	int					b;
+	int					next;
+	int					isnext;
 	int					in;
 	int					ip;
 	struct s_psstack	*s;
 }						t_stupid;
+
+typedef struct			s_stupid2
+{
+	int					in;
+	int					ip;
+	struct s_psstack	*s;
+}						t_stupid2;
 
 typedef struct		s_psstack
 {
@@ -52,10 +63,12 @@ typedef struct			s_psdata
 	char				*log2;
 	char				*log3;
 	char				*log4;
+	char				*log5;
 	int					nb1;
 	int					nb2;
 	int					nb3;
 	int					nb4;
+	int					nb5;
 	t_psstack			*s;
 	t_psstack			*st1a;
 	t_psstack			*st1b;
@@ -65,9 +78,9 @@ typedef struct			s_psdata
 	t_psstack			*st3b;
 	t_psstack			*st4a;
 	t_psstack			*st4b;
+	t_psstack			*st5a;
+	t_psstack			*st5b;
 }						t_psdata;
-
-void		ps_test_free(char **argv);
 
 void		ps_error(t_psdata *ps, int er);
 
@@ -88,10 +101,14 @@ void		ps_move1(t_psdata *ps, enum move move);
 void		ps_move2(t_psdata *ps, enum move move);
 void		ps_move3(t_psdata *ps, enum move move);
 int			ps_move4(t_psdata *ps, enum move move);
+int			ps_move5(t_psdata *ps, enum move move);
 
 int			ps_claptrap(t_psdata *ps);
 
 int			ps_stupid(t_psdata *ps);
+void		ps_stupid_pushb(t_psdata *ps, t_stupid *stu, t_psstack *s
+						, t_psstack *x);
+int			ps_stupid2(t_psdata *ps);
 
 int			ps_solv(t_psdata *ps);
 int			ps_issolved(t_psdata *ps, t_psstack *x);

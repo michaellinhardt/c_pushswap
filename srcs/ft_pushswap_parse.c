@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:54:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 07:21:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,15 @@ void		ps_parse_double(t_psdata *ps)
 	x->stop = 0;
 }
 
+void		ps_parse_add_all(t_psdata *ps, int val)
+{
+	ps_parse_add(ps, &ps->st1a, val);
+	ps_parse_add(ps, &ps->st2a, val);
+	ps_parse_add(ps, &ps->st3a, val);
+	ps_parse_add(ps, &ps->st4a, val);
+	ps_parse_add(ps, &ps->st5a, val);
+}
+
 void		ps_parse_array(t_psdata *ps, char **argv)
 {
 	int			i;
@@ -101,9 +110,6 @@ void		ps_parse_array(t_psdata *ps, char **argv)
 		ps->min = (val < ps->min) ? val : ps->min;
 		ps->max = (ps->count == 1) ? val : ps->max;
 		ps->max = (val > ps->max) ? val : ps->max;
-		ps_parse_add(ps, &ps->st1a, val);
-		ps_parse_add(ps, &ps->st2a, val);
-		ps_parse_add(ps, &ps->st3a, val);
-		ps_parse_add(ps, &ps->st4a, val);
+		ps_parse_add_all(ps, val);
 	}
 }

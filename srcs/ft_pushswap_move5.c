@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_move4.c                                :+:      :+:    :+:   */
+/*   ft_pushswap_move5.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 07:32:24 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 08:18:42 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void			ps_move4_swap(t_psdata *ps, t_psstack *stack)
+void			ps_move5_swap(t_psdata *ps, t_psstack *stack)
 {
 	int		val;
 	int		i;
@@ -25,7 +25,7 @@ void			ps_move4_swap(t_psdata *ps, t_psstack *stack)
 	(stack->p)->i = i;
 }
 
-void			ps_move4_push(t_psdata *ps, t_psstack **src, t_psstack **dst)
+void			ps_move5_push(t_psdata *ps, t_psstack **src, t_psstack **dst)
 {
 	t_psstack			*cut;
 
@@ -48,87 +48,87 @@ void			ps_move4_push(t_psdata *ps, t_psstack **src, t_psstack **dst)
 	*dst = cut;
 }
 
-void		ps_move4_log(t_psdata *ps, enum move move)
+void		ps_move5_log(t_psdata *ps, enum move move)
 {
 	char		*tmp;
 
-	tmp = ps->log4;
+	tmp = ps->log5;
 	if (move == sa)
-		ft_printf("%-!%s sa", &ps->log4, tmp);
+		ft_printf("%-!%s sa", &ps->log5, tmp);
 	if (move == sb)
-		ft_printf("%-!%s sb", &ps->log4, tmp);
+		ft_printf("%-!%s sb", &ps->log5, tmp);
 	if (move == ss)
-		ft_printf("%-!%s ss", &ps->log4, tmp);
+		ft_printf("%-!%s ss", &ps->log5, tmp);
 	if (move == pa)
-		ft_printf("%-!%s pa", &ps->log4, tmp);
+		ft_printf("%-!%s pa", &ps->log5, tmp);
 	if (move == pb)
-		ft_printf("%-!%s pb", &ps->log4, tmp);
+		ft_printf("%-!%s pb", &ps->log5, tmp);
 	if (move == ra)
-		ft_printf("%-!%s ra", &ps->log4, tmp);
+		ft_printf("%-!%s ra", &ps->log5, tmp);
 	if (move == rb)
-		ft_printf("%-!%s rb", &ps->log4, tmp);
+		ft_printf("%-!%s rb", &ps->log5, tmp);
 	if (move == rr)
-		ft_printf("%-!%s rr", &ps->log4, tmp);
+		ft_printf("%-!%s rr", &ps->log5, tmp);
 	if (move == rra)
-		ft_printf("%-!%s rra", &ps->log4, tmp);
+		ft_printf("%-!%s rra", &ps->log5, tmp);
 	if (move == rrb)
-		ft_printf("%-!%s rrb", &ps->log4, tmp);
+		ft_printf("%-!%s rrb", &ps->log5, tmp);
 	if (move == rrr)
-		ft_printf("%-!%s rrr", &ps->log4, tmp);
+		ft_printf("%-!%s rrr", &ps->log5, tmp);
 }
 
-void		ps_move4_print(t_psdata *ps, enum move move)
+void		ps_move5_print(t_psdata *ps, enum move move)
 {
 	return ;
 	if (!ps->verb)
 		return ;
 	if (move == sa)
-		ft_printf("[BUBBLE2] move: sa\n");
+		ft_printf("[STUPID] move: sa\n");
 	if (move == sb)
-		ft_printf("[BUBBLE2] move: sb\n");
+		ft_printf("[STUPID] move: sb\n");
 	if (move == ss)
-		ft_printf("[BUBBLE2] move: ss\n");
+		ft_printf("[STUPID] move: ss\n");
 	if (move == pa)
-		ft_printf("[BUBBLE2] move: pa\n");
+		ft_printf("[STUPID] move: pa\n");
 	if (move == pb)
-		ft_printf("[BUBBLE2] move: pb\n");
+		ft_printf("[STUPID] move: pb\n");
 	if (move == ra)
-		ft_printf("[BUBBLE2] move: ra\n");
+		ft_printf("[STUPID] move: ra\n");
 	if (move == rb)
-		ft_printf("[BUBBLE2] move: rb\n");
+		ft_printf("[STUPID] move: rb\n");
 	if (move == rr)
-		ft_printf("[BUBBLE2] move: rr\n");
+		ft_printf("[STUPID] move: rr\n");
 	if (move == rra)
-		ft_printf("[BUBBLE2] move: rra\n");
+		ft_printf("[STUPID] move: rra\n");
 	if (move == rrb)
-		ft_printf("[BUBBLE2] move: rrb\n");
+		ft_printf("[STUPID] move: rrb\n");
 	if (move == rrr)
-		ft_printf("[BUBBLE2] move: rrr\n");
+		ft_printf("[STUPID] move: rrr\n");
 }
 
-int			ps_move4(t_psdata *ps, enum move move)
+int			ps_move5(t_psdata *ps, enum move move)
 {
 	if (ps->verb)
-		ps_move4_print(ps, move);
+		ps_move5_print(ps, move);
 	if (move == sa || move == ss)
-		ps_move4_swap(ps, ps->st4a);
+		ps_move5_swap(ps, ps->st5a);
 	if (move == sb || move == ss)
-		ps_move4_swap(ps, ps->st4b);
+		ps_move5_swap(ps, ps->st5b);
 	if (move == pa)
-		ps_move4_push(ps, &ps->st4b, &ps->st4a);
+		ps_move5_push(ps, &ps->st5b, &ps->st5a);
 	if (move == pb)
-		ps_move4_push(ps, &ps->st4a, &ps->st4b);
+		ps_move5_push(ps, &ps->st5a, &ps->st5b);
 	if (move == ra || move == rr)
-		ps->st4a = ps->st4a->p;
+		ps->st5a = ps->st5a->p;
 	if (move == rb || move == rr)
-		ps->st4b = ps->st4b->p;
+		ps->st5b = ps->st5b->p;
 	if (move == rra || move == rrr)
-		ps->st4a = ps->st4a->n;
+		ps->st5a = ps->st5a->n;
 	if (move == rrb || move == rrr)
-		ps->st4b = ps->st4b->n;
-	if (!ps->log4 && !(ps->log4 = ft_strnew(0)))
+		ps->st5b = ps->st5b->n;
+	if (!ps->log5 && !(ps->log5 = ft_strnew(0)))
 		ps_error(ps, 100);
-	ps->nb4++;
-	ps_move4_log(ps, move);
+	ps->nb5++;
+	ps_move5_log(ps, move);
 	return (1);
 }

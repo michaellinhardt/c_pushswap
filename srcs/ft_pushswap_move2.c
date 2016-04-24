@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/20 22:34:50 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 07:32:40 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,39 @@ void		ps_move2_log(t_psdata *ps, enum move move)
 		ft_printf("%-!%s rrr", &ps->log2, tmp);
 }
 
+void		ps_move2_print(t_psdata *ps, enum move move)
+{
+	return ;
+	if (!ps->verb)
+		return ;
+	if (move == sa)
+		ft_printf("[STUPID++] move: sa\n");
+	if (move == sb)
+		ft_printf("[STUPID++] move: sb\n");
+	if (move == ss)
+		ft_printf("[STUPID++] move: ss\n");
+	if (move == pa)
+		ft_printf("[STUPID++] move: pa\n");
+	if (move == pb)
+		ft_printf("[STUPID++] move: pb\n");
+	if (move == ra)
+		ft_printf("[STUPID++] move: ra\n");
+	if (move == rb)
+		ft_printf("[STUPID++] move: rb\n");
+	if (move == rr)
+		ft_printf("[STUPID++] move: rr\n");
+	if (move == rra)
+		ft_printf("[STUPID++] move: rra\n");
+	if (move == rrb)
+		ft_printf("[STUPID++] move: rrb\n");
+	if (move == rrr)
+		ft_printf("[STUPID++] move: rrr\n");
+}
+
 void		ps_move2(t_psdata *ps, enum move move)
 {
+	if (ps->verb)
+		ps_move2_print(ps, move);
 	if (move == sa || move == ss)
 		ps_move2_swap(ps, ps->st2a);
 	if (move == sb || move == ss)
