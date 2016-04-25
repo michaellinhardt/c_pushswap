@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 08:38:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 00:24:19 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_verbose_init(t_psdata *ps, char ret[101][512])
+void		ps_verbose_init(char ret[101][512])
 {
 	ft_memcpy(ret[1], "[ERROR] too few argument(s)\n", 28);
 	ft_memcpy(ret[2], "[ERROR] bad option found, use -h for help\n", 42);
@@ -28,5 +28,8 @@ void		ps_verbose_init(t_psdata *ps, char ret[101][512])
 	ft_memcpy(ret[30], "[STUPID] building push order\n", 29);
 	ft_memcpy(ret[31], "[STUPID] push all value to B\n", 29);
 	ft_memcpy(ret[32], "[STUPID] push back to A\n", 24);
+	ft_memcpy(ret[33], "[BUBBLE3] aborted, too many moves!\n", 35);
+	ft_memcpy(ret[34], "[BUBBLE1] aborted, too many moves!\n", 35);
+	ft_memcpy(ret[35], "[BUBBLE2] aborted, too many moves!\n", 35);
 	ft_memcpy(ret[100], "[ERROR] cant malloc\n", 20);
 }

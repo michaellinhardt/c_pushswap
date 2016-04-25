@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 07:32:36 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 00:22:17 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void			ps_move3_swap(t_psdata *ps, t_psstack *stack)
+void			ps_move3_swap(t_psstack *stack)
 {
 	int		val;
 	int		i;
@@ -25,7 +25,7 @@ void			ps_move3_swap(t_psdata *ps, t_psstack *stack)
 	(stack->p)->i = i;
 }
 
-void			ps_move3_push(t_psdata *ps, t_psstack **src, t_psstack **dst)
+void			ps_move3_push(t_psstack **src, t_psstack **dst)
 {
 	t_psstack			*cut;
 
@@ -79,31 +79,30 @@ void		ps_move3_log(t_psdata *ps, enum move move)
 
 void		ps_move3_print(t_psdata *ps, enum move move)
 {
-	return ;
-	if (!ps->verb)
-		return ;
 	if (move == sa)
-		ft_printf("[BUBBLE1] move: sa\n");
+		ft_printf("[BUBBLE1] move %d: sa\n", ps->nb3);
 	if (move == sb)
-		ft_printf("[BUBBLE1] move: sb\n");
+		ft_printf("[BUBBLE1] move %d: sb\n", ps->nb3);
 	if (move == ss)
-		ft_printf("[BUBBLE1] move: ss\n");
+		ft_printf("[BUBBLE1] move %d: ss\n", ps->nb3);
 	if (move == pa)
-		ft_printf("[BUBBLE1] move: pa\n");
+		ft_printf("[BUBBLE1] move %d: pa\n", ps->nb3);
 	if (move == pb)
-		ft_printf("[BUBBLE1] move: pb\n");
+		ft_printf("[BUBBLE1] move %d: pb\n", ps->nb3);
 	if (move == ra)
-		ft_printf("[BUBBLE1] move: ra\n");
+		ft_printf("[BUBBLE1] move %d: ra\n", ps->nb3);
 	if (move == rb)
-		ft_printf("[BUBBLE1] move: rb\n");
+		ft_printf("[BUBBLE1] move %d: rb\n", ps->nb3);
 	if (move == rr)
-		ft_printf("[BUBBLE1] move: rr\n");
+		ft_printf("[BUBBLE1] move %d: rr\n", ps->nb3);
 	if (move == rra)
-		ft_printf("[BUBBLE1] move: rra\n");
+		ft_printf("[BUBBLE1] move %d: rra\n", ps->nb3);
 	if (move == rrb)
-		ft_printf("[BUBBLE1] move: rrb\n");
+		ft_printf("[BUBBLE1] move %d: rrb\n", ps->nb3);
 	if (move == rrr)
-		ft_printf("[BUBBLE1] move: rrr\n");
+		ft_printf("[BUBBLE1] move %d: rrr\n", ps->nb3);
+	ps_stack_print(ps, ps->st3a);
+	ps_stack_print(ps, ps->st3b);
 }
 
 void		ps_move3(t_psdata *ps, enum move move)
@@ -111,13 +110,13 @@ void		ps_move3(t_psdata *ps, enum move move)
 	if (ps->verb)
 		ps_move3_print(ps, move);
 	if (move == sa || move == ss)
-		ps_move3_swap(ps, ps->st3a);
+		ps_move3_swap(ps->st3a);
 	if (move == sb || move == ss)
-		ps_move3_swap(ps, ps->st3b);
+		ps_move3_swap(ps->st3b);
 	if (move == pa)
-		ps_move3_push(ps, &ps->st3b, &ps->st3a);
+		ps_move3_push(&ps->st3b, &ps->st3a);
 	if (move == pb)
-		ps_move3_push(ps, &ps->st3a, &ps->st3b);
+		ps_move3_push(&ps->st3a, &ps->st3b);
 	if (move == ra || move == rr)
 		ps->st3a = ps->st3a->p;
 	if (move == rb || move == rr)

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 08:31:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 00:28:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ void	ps_verbose_color(t_psdata *ps, int msg)
 
 int		ps_verbose(t_psdata *ps, int msg)
 {
-	static char		ret[101][512] = {0};
+	static char		ret[101][512];
 
 	if (!ps->verb)
 		return (1);
 	if (ret[1][0] == '\0')
-		ps_verbose_init(ps, ret);
+		ps_verbose_init(ret);
 	ps_verbose_color(ps, msg);
 	ft_putstr(ret[msg]);
 	ps_verbose_color(ps, 0);

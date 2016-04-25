@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 07:32:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 00:22:30 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void			ps_move2_swap(t_psdata *ps, t_psstack *stack)
+void			ps_move2_swap(t_psstack *stack)
 {
 	int		val;
 	int		i;
@@ -25,7 +25,7 @@ void			ps_move2_swap(t_psdata *ps, t_psstack *stack)
 	(stack->p)->i = i;
 }
 
-void			ps_move2_push(t_psdata *ps, t_psstack **src, t_psstack **dst)
+void			ps_move2_push(t_psstack **src, t_psstack **dst)
 {
 	t_psstack			*cut;
 
@@ -79,31 +79,30 @@ void		ps_move2_log(t_psdata *ps, enum move move)
 
 void		ps_move2_print(t_psdata *ps, enum move move)
 {
-	return ;
-	if (!ps->verb)
-		return ;
 	if (move == sa)
-		ft_printf("[STUPID++] move: sa\n");
+		ft_printf("[STUPID++] move %d: sa\n", ps->nb2);
 	if (move == sb)
-		ft_printf("[STUPID++] move: sb\n");
+		ft_printf("[STUPID++] move %d: sb\n", ps->nb2);
 	if (move == ss)
-		ft_printf("[STUPID++] move: ss\n");
+		ft_printf("[STUPID++] move %d: ss\n", ps->nb2);
 	if (move == pa)
-		ft_printf("[STUPID++] move: pa\n");
+		ft_printf("[STUPID++] move %d: pa\n", ps->nb2);
 	if (move == pb)
-		ft_printf("[STUPID++] move: pb\n");
+		ft_printf("[STUPID++] move %d: pb\n", ps->nb2);
 	if (move == ra)
-		ft_printf("[STUPID++] move: ra\n");
+		ft_printf("[STUPID++] move %d: ra\n", ps->nb2);
 	if (move == rb)
-		ft_printf("[STUPID++] move: rb\n");
+		ft_printf("[STUPID++] move %d: rb\n", ps->nb2);
 	if (move == rr)
-		ft_printf("[STUPID++] move: rr\n");
+		ft_printf("[STUPID++] move %d: rr\n", ps->nb2);
 	if (move == rra)
-		ft_printf("[STUPID++] move: rra\n");
+		ft_printf("[STUPID++] move %d: rra\n", ps->nb2);
 	if (move == rrb)
-		ft_printf("[STUPID++] move: rrb\n");
+		ft_printf("[STUPID++] move %d: rrb\n", ps->nb2);
 	if (move == rrr)
-		ft_printf("[STUPID++] move: rrr\n");
+		ft_printf("[STUPID++] move %d: rrr\n", ps->nb2);
+	ps_stack_print(ps, ps->st2a);
+	ps_stack_print(ps, ps->st2b);
 }
 
 void		ps_move2(t_psdata *ps, enum move move)
@@ -111,13 +110,13 @@ void		ps_move2(t_psdata *ps, enum move move)
 	if (ps->verb)
 		ps_move2_print(ps, move);
 	if (move == sa || move == ss)
-		ps_move2_swap(ps, ps->st2a);
+		ps_move2_swap(ps->st2a);
 	if (move == sb || move == ss)
-		ps_move2_swap(ps, ps->st2b);
+		ps_move2_swap(ps->st2b);
 	if (move == pa)
-		ps_move2_push(ps, &ps->st2b, &ps->st2a);
+		ps_move2_push(&ps->st2b, &ps->st2a);
 	if (move == pb)
-		ps_move2_push(ps, &ps->st2a, &ps->st2b);
+		ps_move2_push(&ps->st2a, &ps->st2b);
 	if (move == ra || move == rr)
 		ps->st2a = ps->st2a->p;
 	if (move == rb || move == rr)

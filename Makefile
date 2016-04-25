@@ -6,15 +6,15 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/24 07:23:12 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/25 00:12:48 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	push_swap
 CC		=	gcc
 CFLAGS1	=	-g
-CFLAGS2	=	-Wall -Wextra -Werror -g
-CFLAGS	=	$(CFLAGS1)
+CFLAGS2	=	-Wall -Wextra -Werror
+CFLAGS	=	$(CFLAGS2)
 
 SRCS	=	ft_pushswap.c \
 			ft_pushswap_parse.c \

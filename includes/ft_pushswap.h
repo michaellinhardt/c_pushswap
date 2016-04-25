@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 07:28:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 01:56:33 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct			s_stupid
 	int					i;
 	int					b;
 	int					next;
-	int					isnext;
+	int					acount;
 	int					in;
 	int					ip;
 	struct s_psstack	*s;
@@ -95,7 +95,7 @@ int			ps_verbose(t_psdata *ps, int msg);
 void		ps_verbose2(t_psdata *ps, int msg);
 void		ps_colors(t_psdata *ps);
 
-void		ps_verbose_init(t_psdata *ps, char ret[101][512]);
+void		ps_verbose_init(char ret[101][512]);
 
 void		ps_move1(t_psdata *ps, enum move move);
 void		ps_move2(t_psdata *ps, enum move move);

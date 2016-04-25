@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 06:34:56 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/24 23:13:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,23 @@ int			ps_bubble3_rotate(t_psdata *ps)
 	return (1);
 }
 
+void		ps_bubble3_isok(t_psdata *ps)
+{
+	if (ps_issolved(ps, ps->st1a) && ps_bubble3_rotate(ps))
+		return ;
+	ps->nb1 = INT_MAX;
+	ps_verbose(ps, 33);
+}
+
 void		ps_bubble3_run(t_psdata *ps)
 {
 	t_psstack	*last;
 	t_psstack	*prev;
 	int			loop;
 
+	ps->i = 10;
 	loop = ps->count;
-	while (42)
+	while (ps->i--)
 	{
 		if (ps_issolved(ps, ps->st1a) && ps_bubble3_rotate(ps))
 			break ;
@@ -61,6 +70,7 @@ void		ps_bubble3_run(t_psdata *ps)
 			ps_move1(ps, ra);
 		}
 	}
+	ps_bubble3_isok(ps);
 }
 
 int			ps_bubble3(t_psdata *ps)

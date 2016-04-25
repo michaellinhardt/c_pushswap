@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 08:32:53 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 01:56:08 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int			ps_stupid(t_psdata *ps)
 		return (1);
 	ft_bzero(&stu, sizeof(t_stupid));
 	ps_stupid_solve(ps, &stu);
+	stu.acount = ps->count;
 	ps_stupid_pushb(ps, &stu, stu.s, ps->st2a);
 	while (ps->st2b)
 		ps_move2(ps, pa);
