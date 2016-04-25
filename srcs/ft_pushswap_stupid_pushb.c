@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 00:06:10 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 00:14:51 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
 	if (!(str = ft_strnew(stu->in)))
 		ps_error(ps, 666);
 	strp = str;
-	ft_printf("taille maloc du log: %d\n", stu->in);
-	while (stu->in)
+	ft_printf("nombre de move: %d\ntaille maloc du log: %d\n", stu->i, stu->in);
+	while (stu->in) // boucle pour écrire la chaine à log en fonction du nombre de move
 	{
 		if (move == ra && ((stu->in -= 3) || 1))
 			ft_memcpy(strp, " ra", 3);
@@ -86,8 +86,9 @@ void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
 			ft_memcpy(strp, " rra", 4);
 		strp += (move == ra) ? 3 : 4;
 	}
-	*strp = '\0';
-	ft_printf("ret: %s\n", str);
+	*strp = '\0'; // termine la chaine de log
+	ft_printf("%-!%s%s", &ps->log2, tmp, str); // enregistre le move et free tmp/str
+	ft_printf("liste move: %s\n", ps->log2);
 }
 
 void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
@@ -110,8 +111,9 @@ void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
 			ft_printf("élement recherché!\n");
 			stu->acount--; // décrémente la taille de la stack a car on va faire un pushb
 			ps_stupid_pushb_rotate_log(ps, stu , move); // on log la liste de déplacement
-			// execute un move(pb)
-			// rerégler stk sur ps->st2a
+			stu->i = 0; // reset le nombre de mouvement effectué
+			ps_move2(ps, pb); // execute le pb
+			stk = ps->st2a; // rerégler stk sur ps->st2a car le pushb a changer la tete
 			next = next->n; // l'élément next étant trouvé, on cherche maintenatn le suivant
 		}
 		// déplace a gauche ou a droite la liste (selon le move demandé)
