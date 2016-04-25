@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/25 01:56:33 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/25 09:55:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct			s_stupid2
 	struct s_psstack	*s;
 }						t_stupid2;
 
-typedef struct		s_psstack
+typedef struct			s_psstack
 {
 	int					stop;
 	int					val;
