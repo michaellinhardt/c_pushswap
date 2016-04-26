@@ -6,14 +6,14 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 09:24:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:39:29 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
 void		ps_stupid_pushb_rotate_display(t_psdata *ps, t_stupid *stu
-									, enum move move)
+									, enum e_move move)
 {
 	if (!ps->verb)
 		return ;
@@ -29,7 +29,7 @@ void		ps_stupid_pushb_rotate_display(t_psdata *ps, t_stupid *stu
 }
 
 void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
-									, enum move move)
+									, enum e_move move)
 {
 	char		*tmp;
 	char		*str;
@@ -81,7 +81,7 @@ void		ps_stupid_pushb_rotate2(t_psdata *ps, t_stupid *stu)
 }
 
 void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
-							, enum move move, t_psstack *stk)
+							, enum e_move move, t_psstack *stk)
 {
 	t_psstack *next;
 

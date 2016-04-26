@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 09:18:18 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:43:19 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			ps_move1_push(t_psstack **src, t_psstack **dst)
 	*dst = cut;
 }
 
-void			ps_move1_log(t_psdata *ps, enum move move)
+void			ps_move1_log(t_psdata *ps, enum e_move move)
 {
 	char		*tmp;
 
@@ -77,7 +77,7 @@ void			ps_move1_log(t_psdata *ps, enum move move)
 		ft_printf("%-!%s rrr", &ps->log1, tmp);
 }
 
-void			ps_move1_print(t_psdata *ps, enum move move)
+void			ps_move1_print(t_psdata *ps, enum e_move move)
 {
 	if (move == sa)
 		ft_printf("[BUBBLE3] move %d: sa\n", (1 + ps->nb1));
@@ -105,7 +105,7 @@ void			ps_move1_print(t_psdata *ps, enum move move)
 	ps_stack_print(ps, ps->st1b);
 }
 
-void			ps_move1(t_psdata *ps, enum move move)
+void			ps_move1(t_psdata *ps, enum e_move move)
 {
 	if (ps->verb)
 		ps_move1_print(ps, move);

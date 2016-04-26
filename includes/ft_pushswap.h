@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 09:04:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:27:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdlib.h>
 # include <limits.h>
 
-enum move { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr };
+enum					e_move { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb
+	, rrr };
 
 typedef struct			s_stupid
 {
@@ -85,44 +86,44 @@ typedef struct			s_psdata
 	t_psstack			*st5b;
 }						t_psdata;
 
-void		ps_error(t_psdata *ps, int er);
+void					ps_error(t_psdata *ps, int er);
 
-void		ps_parse_options(t_psdata *ps, char **argv);
-void		ps_parse_array(t_psdata *ps, char **argv);
-void		ps_parse_double(t_psdata *ps);
+void					ps_parse_options(t_psdata *ps, char **argv);
+void					ps_parse_array(t_psdata *ps, char **argv);
+void					ps_parse_double(t_psdata *ps);
 
-void		ps_options(t_psdata *ps);
-void		ps_set_options(t_psdata *ps, char c);
+void					ps_options(t_psdata *ps);
+void					ps_set_options(t_psdata *ps, char c);
 
-void		ps_stack_free(t_psdata *ps);
-int			ps_stupid2_free(t_stupid2 *stu);
+void					ps_stack_free(t_psdata *ps);
+int						ps_stupid2_free(t_stupid2 *stu);
 
-void		ps_stack_print(t_psdata *ps, t_psstack *root);
-int			ps_verbose(t_psdata *ps, int msg);
-void		ps_verbose2(t_psdata *ps, int msg);
-void		ps_colors(t_psdata *ps);
+void					ps_stack_print(t_psdata *ps, t_psstack *root);
+int						ps_verbose(t_psdata *ps, int msg);
+void					ps_verbose2(t_psdata *ps, int msg);
+void					ps_colors(t_psdata *ps);
 
-void		ps_verbose_init(char ret[101][512]);
+void					ps_verbose_init(char ret[101][512]);
 
-void		ps_move1(t_psdata *ps, enum move move);
-void		ps_move2(t_psdata *ps, enum move move);
-void		ps_move3(t_psdata *ps, enum move move);
-int			ps_move4(t_psdata *ps, enum move move);
-int			ps_move5(t_psdata *ps, enum move move);
+void					ps_move1(t_psdata *ps, enum move move);
+void					ps_move2(t_psdata *ps, enum move move);
+void					ps_move3(t_psdata *ps, enum move move);
+int						ps_move4(t_psdata *ps, enum move move);
+int						ps_move5(t_psdata *ps, enum move move);
 
-int			ps_claptrap(t_psdata *ps);
+int						ps_claptrap(t_psdata *ps);
 
-int			ps_stupid(t_psdata *ps);
-void		ps_stupid_pushb(t_psdata *ps, t_stupid *stu, t_psstack *s
-						, t_psstack *x);
-int			ps_stupid2(t_psdata *ps);
+int						ps_stupid(t_psdata *ps);
+void					ps_stupid_pushb(t_psdata *ps, t_stupid *stu
+						, t_psstack *s, t_psstack *x);
+int						ps_stupid2(t_psdata *ps);
 
-int			ps_solv(t_psdata *ps);
-int			ps_issolved(t_psdata *ps, t_psstack *x);
-void		ps_stupid_solve(t_psdata *ps, t_stupid *stu);
+int						ps_solv(t_psdata *ps);
+int						ps_issolved(t_psdata *ps, t_psstack *x);
+void					ps_stupid_solve(t_psdata *ps, t_stupid *stu);
 
-int			ps_bubble1(t_psdata *ps);
-int			ps_bubble2(t_psdata *ps);
-int			ps_bubble3(t_psdata *ps);
+int						ps_bubble1(t_psdata *ps);
+int						ps_bubble2(t_psdata *ps);
+int						ps_bubble3(t_psdata *ps);
 
 #endif
