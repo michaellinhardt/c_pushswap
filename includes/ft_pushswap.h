@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 19:27:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:46:31 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ void					ps_colors(t_psdata *ps);
 
 void					ps_verbose_init(char ret[101][512]);
 
-void					ps_move1(t_psdata *ps, enum move move);
-void					ps_move2(t_psdata *ps, enum move move);
-void					ps_move3(t_psdata *ps, enum move move);
-int						ps_move4(t_psdata *ps, enum move move);
-int						ps_move5(t_psdata *ps, enum move move);
+void					ps_move1(t_psdata *ps, enum e_move move);
+void					ps_move2(t_psdata *ps, enum e_move move);
+void					ps_move3(t_psdata *ps, enum e_move move);
+int						ps_move4(t_psdata *ps, enum e_move move);
+int						ps_move5(t_psdata *ps, enum e_move move);
 
 int						ps_claptrap(t_psdata *ps);
 

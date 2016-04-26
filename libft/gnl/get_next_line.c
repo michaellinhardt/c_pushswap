@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:53:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 19:20:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:45:30 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ static int		gnl_free(void)
 int				get_next_line(int fd, char **line)
 {
 	t_gnl		*g;
-	void		(*f)(char **line);
 
 	if (fd == -10)
 		return (gnl_free());
