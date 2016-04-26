@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/13 20:28:51 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/26 09:03:54 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/26 19:55:03 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,9 @@ SRCS	=	ft_pushswap.c \
 			ft_pushswap_free.c
 
 INCLUDES 	= -I./includes/ -I./libft/includes/
-LDIR 	= 	./libft/
-SRCSDIR = 	./srcs/
-SRC 	=	$(addprefix $(SRCSDIR), $(SRCS))
+LDIR 		= ./libft/
+SRCSDIR 	= ./srcs/
+SRC 		= $(addprefix $(SRCSDIR), $(SRCS))
 
 RE			= \033[0;31m
 GR			= \033[0;32m
@@ -59,15 +59,15 @@ $(NAME):
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 clean:
-#@echo "$(W8) $(YE)make clean -C $(LDIR)$(WH)"
-#@make clean -C $(LDIR)
+	@echo "$(W8) $(YE)make clean -C $(LDIR)$(WH)"
+	@make clean -C $(LDIR)
 	@echo "$(W8) $(YE)/bin/rm -rf $(NAME)$(WH)"
 	@/bin/rm -rf $(NAME)
 	@echo "$(OK) $(GR)Done!$(WH)"
 
 fclean: clean
-#@echo "$(W8) $(YE)make fclean -C $(LDIR)$(WH)"
-#@make fclean -C $(LDIR)
+	@echo "$(W8) $(YE)make fclean -C $(LDIR)$(WH)"
+	@make fclean -C $(LDIR)
 	@echo "$(W8) $(YE)/bin/rm -rf ./*.dSYM$(WH)"
 	@/bin/rm -rf ./*.dSYM
 	@echo "$(OK) $(GR)Done!$(WH)"
