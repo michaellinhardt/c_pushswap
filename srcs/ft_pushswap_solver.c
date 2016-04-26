@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 01:18:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/21 07:27:08 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 06:40:09 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,47 @@ int			ps_solv(t_psdata *ps)
 	}
 	x->stop = 0;
 	return (1);
+}
+
+void		ps_stupid_solve_add(t_psdata *ps, t_stupid *stu, int val)
+{
+	t_psstack	*last;
+	t_psstack	*new;
+	t_psstack	*s;
+
+	if (!(new = (t_psstack *)malloc(sizeof(t_psstack))))
+		ps_error(ps, 100);
+	ft_bzero(new, sizeof(t_psstack));
+	new->val = val;
+	if (!(stu->s) && ((stu->s = new) || 1))
+		return ;
+	if (val < stu->s->val && ((new->n = stu->s) || 1))
+	{
+		stu->s = new;
+		return ;
+	}
+	s = stu->s;
+	while (s->n && s->val < val && (last = s))
+		s = s->n;
+	if (s->val < val && ((new->n = s->n) || 1))
+		s->n = new;
+	else
+	{
+		last->n = new;
+		new->n = s;
+	}
+}
+
+void		ps_stupid_solve(t_psdata *ps, t_stupid *stu)
+{
+	t_psstack	*x;
+
+	x = ps->st2a;
+	while (!x->stop)
+	{
+		ps_stupid_solve_add(ps, stu, x->val);
+		x = x->n;
+		x->stop = (x->val == ps->st2a->val) ? 1 : 0;
+	}
+	x->stop = 0;
 }

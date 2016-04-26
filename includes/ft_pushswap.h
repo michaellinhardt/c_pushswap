@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 06:08:31 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 06:40:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int			ps_stupid2(t_psdata *ps);
 
 int			ps_solv(t_psdata *ps);
 int			ps_issolved(t_psdata *ps, t_psstack *x);
+void		ps_stupid_solve(t_psdata *ps, t_stupid *stu);
 
 int			ps_bubble1(t_psdata *ps);
 int			ps_bubble2(t_psdata *ps);

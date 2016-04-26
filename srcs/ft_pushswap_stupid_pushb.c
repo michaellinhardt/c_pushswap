@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 05:50:47 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 06:38:06 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,36 +58,8 @@ void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
 		ft_printf("%-!%s%s", &ps->log2, tmp, str);
 }
 
-void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
-									,enum move move)
+void		ps_stupid_pushb_rotate2(t_psdata *ps, t_stupid *stu)
 {
-	t_psstack *stk;
-	t_psstack *next;
-
-	next = stu->s->n;
-	stk = ps->st2a;
-	stu->i = 0;
-	ps->i = 0;
-	while (stk->val != stu->s->val)
-	{
-		if (next && next->n && stk->val == next->val)
-		{
-			ps_stupid_pushb_rotate_log(ps, stu , move);
-			if (ps->verb)
-				ft_printf("[STUPID++] current is next: %d\n", next->val);
-			stu->i = 0;
-			ps->st2a = stk;
-			ps->i++;
-			stu->acount--;
-			ps_move2(ps, pb);
-			stk = ps->st2a;
-			next = next->n;
-		}
-		else
-			stk = ((++stu->i) && move == ra) ? stk->p : stk->n;
-	}
-	ps_stupid_pushb_rotate_log(ps, stu , move);
-	ps->st2a = stk;
 	if (++stu->first > 1)
 	{
 		if ((stu->i = ps->i) && ps->i > 1)
@@ -106,9 +78,33 @@ void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
 		if (ps->i > 0)
 			ps_move2(ps, rb);
 	}
-	stu->acount--;
-	stu->i = 0;
-	stk = ps->st2a;
+}
+
+void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
+							,enum move move, t_psstack *stk)
+{
+	t_psstack *next;
+
+	next = stu->s->n;
+	while (stk->val != stu->s->val)
+	{
+		if (next && next->n && stk->val == next->val)
+		{
+			ps_stupid_pushb_rotate_log(ps, stu , move);
+			ps->st2a = stk;
+			if (!(stu->i = 0) && ++ps->i && (stu->acount-- || 1))
+				ps_move2(ps, pb);
+			stk = ps->st2a;
+			next = next->n;
+		}
+		else
+			stk = ((++stu->i) && move == ra) ? stk->p : stk->n;
+	}
+	ps_stupid_pushb_rotate_log(ps, stu , move);
+	ps->st2a = stk;
+	ps_stupid_pushb_rotate2(ps, stu);
+	if ((stu->acount-- || 1) && (!(stu->i = 0)))
+		stk = ps->st2a;
 	stu->s = next;
 }
 
@@ -117,14 +113,15 @@ void		ps_stupid_pushb(t_psdata *ps, t_stupid *stu, t_psstack *s
 {
 	while (s && s->n && (s->n)->n)
 	{
-		if (ps->verb)
-			ft_printf("[STUPID++] search: %d\n", s->val);
 		stu->ip = 0;
 		x = ps->st2a;
 		while (x->val != s->val && ++stu->ip)
 			x = x->p;
 		stu->in = (stu->ip) ? stu->acount - stu->ip : 0;
-		ps_stupid_pushb_rotate(ps, stu, ((stu->ip <= stu->in) ? 5 : 8));
+		stu->i = 0;
+		ps->i = 0;
+		ps_stupid_pushb_rotate(ps, stu, ((stu->ip <= stu->in) ? 5 : 8)
+			, ps->st2a);
 		s = stu->s;
 	}
 	if (ps->st2a->val > (ps->st2a->p)->val)
