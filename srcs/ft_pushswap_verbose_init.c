@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 08:02:30 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:52:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void		ps_verbose_init2(char ret[101][512])
 	ft_memcpy(ret[41], "     - h   display help\n", 24);
 	ft_memcpy(ret[42], "     - v   verbose mode\n", 24);
 	ft_memcpy(ret[43], "     - c   color mode\n", 22);
-	ft_memcpy(ret[44], "     - g   game mode\n", 21);
 }
 
 void		ps_verbose_init(char ret[101][512])

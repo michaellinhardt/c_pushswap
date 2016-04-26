@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/26 07:32:57 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 09:18:58 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:52:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void		ps_options_help(t_psdata *ps)
 	ps_verbose(ps, 41);
 	ps_verbose(ps, 42);
 	ps_verbose(ps, 43);
-	ps_verbose(ps, 44);
 	ps->verb = verb;
 }
 
