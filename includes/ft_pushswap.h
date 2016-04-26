@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/25 09:55:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 06:08:31 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ enum move { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr };
 typedef struct			s_stupid
 {
 	int					i;
-	int					b;
+	int					j;
+	int					first;
 	int					next;
 	int					acount;
 	int					in;
 	int					ip;
 	struct s_psstack	*s;
+	struct s_psstack	*sfree;
 }						t_stupid;
 
 typedef struct			s_stupid2
@@ -89,6 +91,7 @@ void		ps_parse_array(t_psdata *ps, char **argv);
 void		ps_parse_double(t_psdata *ps);
 
 void		ps_stack_free(t_psdata *ps);
+int			ps_stupid2_free(t_stupid2 *stu);
 
 void		ps_stack_print(t_psdata *ps, t_psstack *root);
 int			ps_verbose(t_psdata *ps, int msg);

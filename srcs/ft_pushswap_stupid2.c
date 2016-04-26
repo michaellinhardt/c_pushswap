@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 23:50:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 04:59:56 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void		ps_stupid2_pushb(t_psdata *ps, t_stupid2 *stu, t_psstack *s
 {
 	while (s && s->n)
 	{
+		if ((ps->nb5 > ps->nb1 || ps->nb5 > ps->nb2 || ps->nb5 > ps->nb3
+			|| ps->nb5 > ps->nb4) && (ps->nb5 = INT_MAX))
+			break;
 		stu->ip = 0;
 		stu->in = 0;
 		x = ps->st5a;
@@ -107,7 +110,6 @@ void		ps_stupid2_pushb(t_psdata *ps, t_stupid2 *stu, t_psstack *s
 int			ps_stupid2(t_psdata *ps)
 {
 	t_stupid2	stu;
-	t_psstack	*destroy;
 
 	if (ps_issolved(ps, ps->st5a) && ps_stupid2_rotate(ps))
 		return (1);
@@ -115,12 +117,12 @@ int			ps_stupid2(t_psdata *ps)
 	ps_stupid2_solve(ps, &stu);
 	ps_stupid2_pushb(ps, &stu, stu.s, ps->st5a);
 	while (ps->st5b)
-		ps_move5(ps, pa);
-	while (stu.s)
-	{
-		destroy = stu.s;
-		stu.s = stu.s->n;
-		ft_memdel((void **)&destroy);
-	}
+		if ((ps->nb5 > ps->nb1 || ps->nb5 > ps->nb2 || ps->nb5 > ps->nb3
+			|| ps->nb5 > ps->nb4) && (ps->nb5 = INT_MAX) && ps_verbose(ps, 36)
+				&& ps_stupid2_free(&stu))
+			return (1);
+		else
+			ps_move5(ps, pa);
+	ps_stupid2_free(&stu);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 23:13:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 04:41:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void		ps_bubble3_run(t_psdata *ps)
 	loop = ps->count;
 	while (ps->i--)
 	{
-		if (ps_issolved(ps, ps->st1a) && ps_bubble3_rotate(ps))
+		if ((ps_issolved(ps, ps->st1a) && ps_bubble3_rotate(ps))
+			|| (ps->nb1 > ps->nb2 || ps->nb1 > ps->nb3 || ps->nb1 > ps->nb4))
 			break ;
 		last = ps->st1a;
 		prev = last->p;
@@ -75,6 +76,10 @@ void		ps_bubble3_run(t_psdata *ps)
 
 int			ps_bubble3(t_psdata *ps)
 {
+	if (!ps->st1a)
+		return (1);
+	if (ps_issolved(ps, ps->st1a) && ps_bubble3_rotate(ps))
+		return (1);
 	ps_move1(ps, rra);
 	ps_move1(ps, rra);
 	ps_bubble3_run(ps);

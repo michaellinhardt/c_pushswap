@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/24 07:21:53 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 03:26:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void		ps_parse_double(t_psdata *ps)
 	t_psstack	*y;
 	int			loop;
 
+	if (!ps->st1a)
+		return ;
 	x = ps->st1a;
 	while (!x->stop)
 	{

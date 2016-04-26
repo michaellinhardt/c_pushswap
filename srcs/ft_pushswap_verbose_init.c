@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/25 00:24:19 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 04:48:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void		ps_verbose_init(char ret[101][512])
 	ft_memcpy(ret[33], "[BUBBLE3] aborted, too many moves!\n", 35);
 	ft_memcpy(ret[34], "[BUBBLE1] aborted, too many moves!\n", 35);
 	ft_memcpy(ret[35], "[BUBBLE2] aborted, too many moves!\n", 35);
+	ft_memcpy(ret[36], "[STUPID] aborted, too many moves!\n", 34);
 	ft_memcpy(ret[100], "[ERROR] cant malloc\n", 20);
 }

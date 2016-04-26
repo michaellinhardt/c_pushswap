@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/25 00:22:43 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 04:34:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,27 @@ void		ps_move1_log(t_psdata *ps, enum move move)
 void		ps_move1_print(t_psdata *ps, enum move move)
 {
 	if (move == sa)
-		ft_printf("[BUBBLE3] move %d: sa\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: sa\n", (1 + ps->nb1));
 	if (move == sb)
-		ft_printf("[BUBBLE3] move %d: sb\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: sb\n", (1 + ps->nb1));
 	if (move == ss)
-		ft_printf("[BUBBLE3] move %d: ss\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: ss\n", (1 + ps->nb1));
 	if (move == pa)
-		ft_printf("[BUBBLE3] move %d: pa\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: pa\n", (1 + ps->nb1));
 	if (move == pb)
-		ft_printf("[BUBBLE3] move %d: pb\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: pb\n", (1 + ps->nb1));
 	if (move == ra)
-		ft_printf("[BUBBLE3] move %d: ra\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: ra\n", (1 + ps->nb1));
 	if (move == rb)
-		ft_printf("[BUBBLE3] move %d: rb\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: rb\n", (1 + ps->nb1));
 	if (move == rr)
-		ft_printf("[BUBBLE3] move %d: rr\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: rr\n", (1 + ps->nb1));
 	if (move == rra)
-		ft_printf("[BUBBLE3] move %d: rra\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: rra\n", (1 + ps->nb1));
 	if (move == rrb)
-		ft_printf("[BUBBLE3] move %d: rrb\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: rrb\n", (1 + ps->nb1));
 	if (move == rrr)
-		ft_printf("[BUBBLE3] move %d: rrr\n", ps->nb1);
+		ft_printf("[BUBBLE3] move %d: rrr\n", (1 + ps->nb1));
 	ps_stack_print(ps, ps->st1a);
 	ps_stack_print(ps, ps->st1b);
 }

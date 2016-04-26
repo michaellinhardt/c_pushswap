@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/25 00:21:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 04:33:46 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,27 @@ void		ps_move4_log(t_psdata *ps, enum move move)
 void		ps_move4_print(t_psdata *ps, enum move move)
 {
 	if (move == sa)
-		ft_printf("[BUBBLE2] move %d: sa\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: sa\n", (1+ ps->nb4));
 	if (move == sb)
-		ft_printf("[BUBBLE2] move %d: sb\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: sb\n", (1+ ps->nb4));
 	if (move == ss)
-		ft_printf("[BUBBLE2] move %d: ss\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: ss\n", (1+ ps->nb4));
 	if (move == pa)
-		ft_printf("[BUBBLE2] move %d: pa\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: pa\n", (1+ ps->nb4));
 	if (move == pb)
-		ft_printf("[BUBBLE2] move %d: pb\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: pb\n", (1+ ps->nb4));
 	if (move == ra)
-		ft_printf("[BUBBLE2] move %d: ra\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: ra\n", (1+ ps->nb4));
 	if (move == rb)
-		ft_printf("[BUBBLE2] move %d: rb\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: rb\n", (1+ ps->nb4));
 	if (move == rr)
-		ft_printf("[BUBBLE2] move %d: rr\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: rr\n", (1+ ps->nb4));
 	if (move == rra)
-		ft_printf("[BUBBLE2] move %d: rra\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: rra\n", (1+ ps->nb4));
 	if (move == rrb)
-		ft_printf("[BUBBLE2] move %d: rrb\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: rrb\n", (1+ ps->nb4));
 	if (move == rrr)
-		ft_printf("[BUBBLE2] move %d: rrr\n", ps->nb4);
+		ft_printf("[BUBBLE2] move %d: rrr\n", (1+ ps->nb4));
 	ps_stack_print(ps, ps->st4a);
 	ps_stack_print(ps, ps->st4b);
 }

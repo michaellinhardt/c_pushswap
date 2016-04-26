@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/25 01:58:51 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 06:04:26 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		ps_display(t_psdata *ps)
 {
 	char	*s;
 
-	if (ps->count < 1)
+	if (ps->count < 100)
 	{
 		if ((ps->nb1 <= ps->nb2 && ps->nb1 <= ps->nb3 && ps->nb1 <= ps->nb4
 			&& ps->nb1 <= ps->nb5) && ((ps->i = ps->nb1) || 1))
@@ -58,7 +58,7 @@ void		ps_runalgo(t_psdata *ps, int argc)
 	argc = ((ps_verbose(ps, 20)) && (ps_solv(ps)) && (ps_stupid(ps))) ? 1 : 0;
 	argc = (ps->verb) ? ft_printf("%s[ALGO] stupid++ finish: %d move(s)%s\n",
 		ps->cyel, ps->nb2, ps->cwhi) : argc;
-	if (ps->count < 1)
+	if (ps->count < 100)
 	{
 		argc = ((ps_verbose(ps, 21)) && (ps_bubble1(ps))) ? 1 : 0;
 		argc = (ps->verb) ? ft_printf("%s[ALGO] bubble1 finish: %d move(s)%s\n",
@@ -89,7 +89,7 @@ int			main(int argc, char **argv)
 	}
 	ps_display(&ps);
 	if (ps.verb)
-		ft_printf(".. in %d move(s)\n", ps.i);
+		ft_printf("%s.. in %d move(s)%s\n", ps.cyel, ps.i, ps.cwhi);
 	ps_stack_free(&ps);
 	return (0);
 }

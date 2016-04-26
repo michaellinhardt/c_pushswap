@@ -6,63 +6,26 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 00:14:51 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 05:50:47 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_stupid_pushb_eval3(t_psdata *ps, t_psstack **s, t_stupid *stu)
+void		ps_stupid_pushb_rotate_display(t_psdata *ps, t_stupid *stu
+									,enum move move)
 {
-	stu->i = stu->next;
-	while (stu->i--)
-		*s = (*s)->n;
-	if (stu->next == 1)
-	{
-		stu->acount--;
-		ps_move2(ps, pb);
-		ps_move2(ps, sb);
-	}
+	if (!ps->verb)
+		return ;
+	if (stu->i > 1)
+		ft_printf("[STUPID++] moves %d to %d: %s * %d\n",
+			(ps->nb2 - stu->i + 1), ps->nb2, ((move == ra) ? "ra" : "rra"),
+				stu->i);
 	else
-	{
-		stu->i = stu->next;
-		while (stu->i--)
-			ps_move2(ps, rb);
-		stu->acount--;
-		ps_move2(ps, pb);
-		while (stu->next--)
-			ps_move2(ps, rrb);
-	}
-	stu->next = 0;
-	stu->b++;
-}
-
-void		ps_stupid_pushb_eval2(t_psdata *ps, t_psstack **s, t_stupid *stu
-								, int mode)
-{
-	t_psstack *n;
-
-	n = *s;
-	stu->i = stu->next + 1;
-	while (n && stu->i--)
-		n = n->n;
-	if (mode != 3)
-	{
-		if (n && n->n && stu->b && n->val == ps->st2a->val)
-		{
-			stu->next++;
-			stu->acount--;
-			ps_move2(ps, pb);
-			if (mode == 2)
-				stu->in++;
-		}
-		else if (mode == 1)
-			ps_move2(ps, ra);
-		else if (mode == 2)
-			ps_move2(ps, rra);
-	}
-	else
-		ps_stupid_pushb_eval3(ps, s, stu);
+		ft_printf("[STUPID++] move %d: %s\n", ps->nb2,
+			((move == ra) ? "ra" : "rra"));
+	ps_stack_print(ps, ps->st2a);
+	ps_stack_print(ps, ps->st2b);
 }
 
 void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
@@ -72,13 +35,15 @@ void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
 	char		*str;
 	char		*strp;
 
-	tmp = ps->log2; // retiens lancien log
-	stu->in = (move == ra) ? (stu->i * 3) : (stu->i * 4); // calcule la taille du maloc
+	if (!stu->i)
+		return ;
+	tmp = ps->log2;
+	stu->in = (move == ra) ? (stu->i * 3) : (stu->i * 4);
 	if (!(str = ft_strnew(stu->in)))
 		ps_error(ps, 666);
 	strp = str;
-	ft_printf("nombre de move: %d\ntaille maloc du log: %d\n", stu->i, stu->in);
-	while (stu->in) // boucle pour écrire la chaine à log en fonction du nombre de move
+	ps->nb2 += stu->i;
+	while (stu->in)
 	{
 		if (move == ra && ((stu->in -= 3) || 1))
 			ft_memcpy(strp, " ra", 3);
@@ -86,89 +51,82 @@ void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
 			ft_memcpy(strp, " rra", 4);
 		strp += (move == ra) ? 3 : 4;
 	}
-	*strp = '\0'; // termine la chaine de log
-	ft_printf("%-!%s%s", &ps->log2, tmp, str); // enregistre le move et free tmp/str
-	ft_printf("liste move: %s\n", ps->log2);
+	ps_stupid_pushb_rotate_display(ps, stu , move);
+	if (((*strp = '\0') || 1) && !ps->log2)
+		ps->log2 = str;
+	else
+		ft_printf("%-!%s%s", &ps->log2, tmp, str);
 }
 
 void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
 									,enum move move)
 {
-	t_psstack *stk; // ptr utilisé pour parcourir la liste
-	t_psstack *next; // ptr sur lelement next recherché
+	t_psstack *stk;
+	t_psstack *next;
 
-
-	// FONCTION APPELLé QUAND ON CONNAIS LA DIRECTION ET LELEMENT RECHERCHé
-	next = stu->s->n; // ELEMENT SUIVANT DE LA SOLUTION
-	stk = ps->st2a; // DEPART DE LA STACK
-	stu->i = 0; // permet de compter le nombre de déplacement pour les log
-	ft_printf("stk: %d, s: %d\n", stk->val, stu->s->val);
-	while (stk->val != stu->s->val) // parcour tous les élément jusko recherché
+	next = stu->s->n;
+	stk = ps->st2a;
+	stu->i = 0;
+	ps->i = 0;
+	while (stk->val != stu->s->val)
 	{
-		ft_printf("eval: %d, next: %d, move: %d\n", stk->val, next->val, stu->i);
-		if (next && stk->val == next->val) // la valeur actuel est le next recherché
+		if (next && next->n && stk->val == next->val)
 		{
-			ft_printf("élement recherché!\n");
-			stu->acount--; // décrémente la taille de la stack a car on va faire un pushb
-			ps_stupid_pushb_rotate_log(ps, stu , move); // on log la liste de déplacement
-			stu->i = 0; // reset le nombre de mouvement effectué
-			ps_move2(ps, pb); // execute le pb
-			stk = ps->st2a; // rerégler stk sur ps->st2a car le pushb a changer la tete
-			next = next->n; // l'élément next étant trouvé, on cherche maintenatn le suivant
+			ps_stupid_pushb_rotate_log(ps, stu , move);
+			if (ps->verb)
+				ft_printf("[STUPID++] current is next: %d\n", next->val);
+			stu->i = 0;
+			ps->st2a = stk;
+			ps->i++;
+			stu->acount--;
+			ps_move2(ps, pb);
+			stk = ps->st2a;
+			next = next->n;
 		}
-		// déplace a gauche ou a droite la liste (selon le move demandé)
-		// et incrémente stu->i pour compter les déplacement fais
-		stk = ((++stu->i) && move == ra) ? stk->p : stk->n;
+		else
+			stk = ((++stu->i) && move == ra) ? stk->p : stk->n;
 	}
-	// ici on est arrivé à l'élément recherché, on peux le push
-	// on change l'élément recherché
+	ps_stupid_pushb_rotate_log(ps, stu , move);
+	ps->st2a = stk;
+	if (++stu->first > 1)
+	{
+		if ((stu->i = ps->i) && ps->i > 1)
+			while (ps->i--)
+				ps_move2(ps, rb);
+		ps_move2(ps, pb);
+		if (stu->i && stu->i > 1)
+			while (stu->i--)
+				ps_move2(ps, rrb);
+		if (ps->i == 1)
+			ps_move2(ps, sb);
+	}
+	else
+	{
+		ps_move2(ps, pb);
+		if (ps->i > 0)
+			ps_move2(ps, rb);
+	}
+	stu->acount--;
+	stu->i = 0;
+	stk = ps->st2a;
 	stu->s = next;
 }
 
 void		ps_stupid_pushb(t_psdata *ps, t_stupid *stu, t_psstack *s
 						, t_psstack *x)
 {
-	while (s && s->n) // BOUCLE SUR CHAQUE ELEM DE LA SOLUTION
+	while (s && s->n && (s->n)->n)
 	{
-		stu->ip = 0;
-		x = ps->st2a;
-		while (x->val != s->val && ++stu->ip)
-			x = x->p; // POSITION DE LELEMENT RECHERCHER DANS LA STACK
-		// NOMBRE DE DEPLACEMENT DANS UN SENS ET DANS LAUTRE ->
-		stu->in = (stu->ip) ? stu->acount - stu->ip : 0;
-		// ps->i = (stu->ip <= stu->in) ? stu->ip : stu->in;
-		// if (stu->ip <= stu->in) // MOVE RA DEMANDÉ STU->IP FOIS
-		ft_printf("watch for: %d\n", s->val);
-		ps_stack_print(ps, ps->st2a);
-		// ICI ON CONNAIS LELEMENT RECHERCHé, AINSI QUE LA DIRECTION A PRENDRE
-		ps_stupid_pushb_rotate(ps, stu, ((stu->ip <= stu->in) ? 5 : 8)); // 5 = enum move ra
-		// else // MOVE RRA DEMANDÉ STU->IN FOIS
-		// 	ps_stupid_rotate(ps, stu, x, 8); // 8 = enum move ra
-		// ROTATION DE PILE B POUR REPLACER LES ELEMENT PRIS AU VOL
-
-		// PUIS PUSHB L'ELEMENT INITIALEMENT RECHERCHÉ
-
-		s = s->n;
-	}
-}
-
-void		ps_stupid_pushb_backup(t_psdata *ps, t_stupid *stu, t_psstack *s
-						, t_psstack *x)
-{
-	while (s && s->n)
-	{
+		if (ps->verb)
+			ft_printf("[STUPID++] search: %d\n", s->val);
 		stu->ip = 0;
 		x = ps->st2a;
 		while (x->val != s->val && ++stu->ip)
 			x = x->p;
 		stu->in = (stu->ip) ? stu->acount - stu->ip : 0;
-		if (stu->ip <= stu->in)
-			while (stu->ip--)
-				ps_stupid_pushb_eval2(ps, &s, stu, 1);
-		else
-			while (stu->in--)
-				ps_stupid_pushb_eval2(ps, &s, stu, 2);
-		ps_stupid_pushb_eval2(ps, &s, stu, 3);
-		s = s->n;
+		ps_stupid_pushb_rotate(ps, stu, ((stu->ip <= stu->in) ? 5 : 8));
+		s = stu->s;
 	}
+	if (ps->st2a->val > (ps->st2a->p)->val)
+		ps_move2(ps, sa);
 }
