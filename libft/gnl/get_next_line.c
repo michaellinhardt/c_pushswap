@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:53:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/01/28 03:31:48 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 19:20:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_gnl	*gnl_choose(int fd, t_gnl *root2)
 		return (new);
 	}
 	gnl = gnl_create(gnl, fd);
-	return(gnl);
+	return (gnl);
 }
 
 static int		gnl_delete(t_gnl *erase)
@@ -105,7 +105,7 @@ static int		gnl_free(void)
 int				get_next_line(int fd, char **line)
 {
 	t_gnl		*g;
-	void	(*f)(char **line);
+	void		(*f)(char **line);
 
 	if (fd == -10)
 		return (gnl_free());
@@ -114,7 +114,8 @@ int				get_next_line(int fd, char **line)
 		return (-1);
 	while (!(ft_strchr(g->s, '\n')) && (g->r = read(fd, g->b, BUFF_SIZE)) > 0)
 	{
-		if (!(g->b[g->r] = '\0') && (g->t = g->s))
+		g->t = g->s;
+		if (!(g->b[g->r] = '\0'))
 			g->s = ft_strjoin(g->t, g->b);
 		ft_strdel(&g->t);
 	}
@@ -122,9 +123,7 @@ int				get_next_line(int fd, char **line)
 		g->i++;
 	if (g->r == 0 && g->i == 0)
 		return (gnl_delete(g));
-	*line = ft_strsub(g->s,0, (g->i));
-	if (MAP && (f = F))
-		(f)(line);
+	*line = ft_strsub(g->s, 0, (g->i));
 	g->t = g->s;
 	g->s = (g->t[g->i] == '\0') ? ft_strnew(0) : ft_strsub(g->t,
 	(g->i + 1), (ft_strlen(g->t) - g->i));

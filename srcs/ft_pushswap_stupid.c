@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 07:26:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:21:13 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int			ps_stupid_rotate(t_psdata *ps)
 {
-	int		ip;
-	int		in;
+	int			ip;
+	int			in;
 	t_psstack	*x;
 
 	if (!ps->st2a)
@@ -58,7 +58,8 @@ void		ps_stupid_pusha(t_psdata *ps, t_stupid *stu)
 
 	tmp = ps->log2;
 	ps->i = ps->count - stu->acount;
-	if (!(str = ft_strnew((stu->in = ps->i * 3))))
+	stu->in = ps->i * 3;
+	if (!(str = ft_strnew(stu->in)))
 		ps_error(ps, 666);
 	strp = str;
 	ps->nb2 += ps->i;

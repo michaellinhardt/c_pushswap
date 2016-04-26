@@ -6,14 +6,14 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 06:38:06 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:24:26 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
 void		ps_stupid_pushb_rotate_display(t_psdata *ps, t_stupid *stu
-									,enum move move)
+									, enum move move)
 {
 	if (!ps->verb)
 		return ;
@@ -29,7 +29,7 @@ void		ps_stupid_pushb_rotate_display(t_psdata *ps, t_stupid *stu
 }
 
 void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
-									,enum move move)
+									, enum move move)
 {
 	char		*tmp;
 	char		*str;
@@ -51,7 +51,7 @@ void		ps_stupid_pushb_rotate_log(t_psdata *ps, t_stupid *stu
 			ft_memcpy(strp, " rra", 4);
 		strp += (move == ra) ? 3 : 4;
 	}
-	ps_stupid_pushb_rotate_display(ps, stu , move);
+	ps_stupid_pushb_rotate_display(ps, stu, move);
 	if (((*strp = '\0') || 1) && !ps->log2)
 		ps->log2 = str;
 	else
@@ -81,7 +81,7 @@ void		ps_stupid_pushb_rotate2(t_psdata *ps, t_stupid *stu)
 }
 
 void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
-							,enum move move, t_psstack *stk)
+							, enum move move, t_psstack *stk)
 {
 	t_psstack *next;
 
@@ -90,7 +90,7 @@ void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
 	{
 		if (next && next->n && stk->val == next->val)
 		{
-			ps_stupid_pushb_rotate_log(ps, stu , move);
+			ps_stupid_pushb_rotate_log(ps, stu, move);
 			ps->st2a = stk;
 			if (!(stu->i = 0) && ++ps->i && (stu->acount-- || 1))
 				ps_move2(ps, pb);
@@ -100,7 +100,7 @@ void		ps_stupid_pushb_rotate(t_psdata *ps, t_stupid *stu
 		else
 			stk = ((++stu->i) && move == ra) ? stk->p : stk->n;
 	}
-	ps_stupid_pushb_rotate_log(ps, stu , move);
+	ps_stupid_pushb_rotate_log(ps, stu, move);
 	ps->st2a = stk;
 	ps_stupid_pushb_rotate2(ps, stu);
 	if ((stu->acount-- || 1) && (!(stu->i = 0)))

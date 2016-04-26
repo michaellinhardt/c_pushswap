@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/26 07:32:57 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 09:04:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:18:58 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		ps_options_help(t_psdata *ps)
 void		ps_set_options(t_psdata *ps, char c)
 {
 	if (c == 'v' && (ps->verb = 1))
-			ps_verbose(ps, 10);
+		ps_verbose(ps, 10);
 	else if (c == 'c' && (ps->col = 1))
 	{
 		ps_colors(ps);

@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 05:01:40 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:19:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			ps_move2_push(t_psstack **src, t_psstack **dst)
 	*dst = cut;
 }
 
-void		ps_move2_log(t_psdata *ps, enum move move)
+void			ps_move2_log(t_psdata *ps, enum move move)
 {
 	char		*tmp;
 
@@ -77,7 +77,7 @@ void		ps_move2_log(t_psdata *ps, enum move move)
 		ft_printf("%-!%s rrr", &ps->log2, tmp);
 }
 
-void		ps_move2_print(t_psdata *ps, enum move move)
+void			ps_move2_print(t_psdata *ps, enum move move)
 {
 	if (move == sa)
 		ft_printf("[STUPID++] move %d: sa\n", (1 + ps->nb2));
@@ -105,7 +105,7 @@ void		ps_move2_print(t_psdata *ps, enum move move)
 	ps_stack_print(ps, ps->st2b);
 }
 
-void		ps_move2(t_psdata *ps, enum move move)
+void			ps_move2(t_psdata *ps, enum move move)
 {
 	if (ps->verb)
 		ps_move2_print(ps, move);

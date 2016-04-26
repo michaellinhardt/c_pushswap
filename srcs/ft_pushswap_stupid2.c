@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 04:59:56 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:23:39 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void		ps_stupid2_solve(t_psdata *ps, t_stupid2 *stu)
 
 int			ps_stupid2_rotate(t_psdata *ps)
 {
-	int		ip;
-	int		in;
+	int			ip;
+	int			in;
 	t_psstack	*x;
 
 	if (!ps->st5a)
@@ -87,7 +87,7 @@ void		ps_stupid2_pushb(t_psdata *ps, t_stupid2 *stu, t_psstack *s
 	{
 		if ((ps->nb5 > ps->nb1 || ps->nb5 > ps->nb2 || ps->nb5 > ps->nb3
 			|| ps->nb5 > ps->nb4) && (ps->nb5 = INT_MAX))
-			break;
+			break ;
 		stu->ip = 0;
 		stu->in = 0;
 		x = ps->st5a;

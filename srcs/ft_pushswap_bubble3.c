@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 04:41:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:16:53 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int			ps_bubble3_rotate(t_psdata *ps)
 {
-	int		ip;
-	int		in;
+	int			ip;
+	int			in;
 	t_psstack	*x;
 
 	if (!ps->st1a)

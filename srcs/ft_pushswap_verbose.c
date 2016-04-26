@@ -6,13 +6,13 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 06:02:52 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:22:35 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pushswap.h"
 
-void		ps_colors(t_psdata *ps)
+void			ps_colors(t_psdata *ps)
 {
 	if (ps->col == 0)
 	{
@@ -30,7 +30,7 @@ void		ps_colors(t_psdata *ps)
 	}
 }
 
-void		ps_stack_print(t_psdata *ps, t_psstack *read)
+void			ps_stack_print(t_psdata *ps, t_psstack *read)
 {
 	int			stop;
 
@@ -47,14 +47,14 @@ void		ps_stack_print(t_psdata *ps, t_psstack *read)
 	ft_printf("%d%s\n", read->val, ps->cwhi);
 }
 
-void	ps_verbose2(t_psdata *ps, int msg)
+void			ps_verbose2(t_psdata *ps, int msg)
 {
 	if (!ps->verb)
 		return ;
 	ps_verbose(ps, msg);
 }
 
-void	ps_verbose_color(t_psdata *ps, int msg)
+void			ps_verbose_color(t_psdata *ps, int msg)
 {
 	if (!ps->col)
 		return ;
@@ -66,7 +66,7 @@ void	ps_verbose_color(t_psdata *ps, int msg)
 		ft_putstr(ps->cyel);
 }
 
-int		ps_verbose(t_psdata *ps, int msg)
+int				ps_verbose(t_psdata *ps, int msg)
 {
 	static char		ret[101][512];
 
