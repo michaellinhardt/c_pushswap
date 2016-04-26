@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 06:40:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:04:55 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct			s_psdata
 	int					count;
 	int					opts;
 	int					verb;
+	int					help;
 	int					col;
 	char				cwhi[7];
 	char				cyel[7];
@@ -89,6 +90,9 @@ void		ps_error(t_psdata *ps, int er);
 void		ps_parse_options(t_psdata *ps, char **argv);
 void		ps_parse_array(t_psdata *ps, char **argv);
 void		ps_parse_double(t_psdata *ps);
+
+void		ps_options(t_psdata *ps);
+void		ps_set_options(t_psdata *ps, char c);
 
 void		ps_stack_free(t_psdata *ps);
 int			ps_stupid2_free(t_stupid2 *stu);

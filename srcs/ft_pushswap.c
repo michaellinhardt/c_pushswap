@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 04:38:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 06:04:26 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:04:49 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ void		ps_runalgo(t_psdata *ps, int argc)
 	}
 }
 
+// IDEE BONUS:
+// 		-h affiche la liste des move
+// 		-r prends en param un fichier contenant une liste de move, les applique
+// 		et dis si sa résoud ou pas
+// 		-s affiche la solution
+// 		-rk execute les move tapé sur l'entrée standard
+// 		-g mode game, rk mais avec un décompte d'action maximum (celui de l'algo)
+
 int			main(int argc, char **argv)
 {
 	t_psdata	ps;
@@ -85,6 +93,7 @@ int			main(int argc, char **argv)
 		ps_parse_options(&ps, argv);
 		ps_parse_array(&ps, argv);
 		ps_parse_double(&ps);
+		ps_options(&ps);
 		ps_runalgo(&ps, argc);
 	}
 	ps_display(&ps);

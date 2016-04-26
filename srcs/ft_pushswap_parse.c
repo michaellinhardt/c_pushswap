@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/29 05:13:41 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/26 03:26:34 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/26 09:06:08 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,7 @@ void		ps_parse_options(t_psdata *ps, char **argv)
 		return ;
 	ps_colors(ps);
 	while (argv[1][++i])
-	{
-		if (argv[1][i] == 'v' && (ps->verb = 1))
-			ps_verbose(ps, 10);
-		else if (argv[1][i] == 'c' && (ps->col = 1))
-		{
-			ps_colors(ps);
-			ps_verbose(ps, 11);
-		}
-		else
-			ps_error(ps, 2);
-	}
+		ps_set_options(ps, argv[1][i]);
 	ps->opts = 1;
 }
 
